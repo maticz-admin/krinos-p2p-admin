@@ -89,20 +89,20 @@ class Paymenttypes extends Component {
                     previous: "<",
                     next: ">",
                     last: ">>"
-                  }
+                }
             },
             show_length_menu: false,
             show_filter: true,
             show_pagination: true,
             show_info: true,
-            
+
         };
 
         this.state = {
             records: [],
             addFormModal: false,
             editFormModal: false,
-            currencyOptions:[],            
+            currencyOptions: [],
             editRecord: {},
             loader: "",
             page: 1,
@@ -128,15 +128,15 @@ class Paymenttypes extends Component {
         this.getpaymenttypes(payload)
     };
 
-    async getpaymenttypes(data){
-        try{
+    async getpaymenttypes(data) {
+        try {
             var result = await Getpaymenttypehook(data);
-        if(result?.data?.type == "success"){
-            // var value = this?.state?.count + this?.state?.limit
-            this.setState({ "count": result?.data?.count , 'records': result?.data?.data })
+            if (result?.data?.type == "success") {
+                // var value = this?.state?.count + this?.state?.limit
+                this.setState({ "count": result?.data?.count, 'records': result?.data?.data })
+            }
         }
-        }
-        catch(e){
+        catch (e) {
         }
     }
 
@@ -155,10 +155,10 @@ class Paymenttypes extends Component {
 
     }
 
-    async getOfferDetails(){
+    async getOfferDetails() {
         const { result, status } = await getOffer();
         if (status == "success") {
-           
+
         }
     }
 
@@ -172,7 +172,7 @@ class Paymenttypes extends Component {
         this.setState({ addFormModal: true })
     }
 
-                    handleCloseAddForm() {
+    handleCloseAddForm() {
         this.setState({ addFormModal: false })
     }
 
@@ -193,11 +193,11 @@ class Paymenttypes extends Component {
         this.getpaymenttypes(reqData);
         this.setState({ page: index.page_number, limit: index.page_size, search: index.filter_value })
     }
-   
+
 
 
     render() {
-        const { addFormModal, editRecord, editFormModal ,currencyOptions} = this.state;
+        const { addFormModal, editRecord, editFormModal, currencyOptions } = this.state;
 
         return (
             <div>
@@ -219,7 +219,7 @@ class Paymenttypes extends Component {
                     />
                     <div id="page-content-wrapper">
                         <div className="container-fluid">
-                            <button onClick={() => this.addRecord()} className="btn btn-outline-primary float-right mt-3 mr-2" data-toggle="modal" data-target="#add-spot-modal"><FontAwesomeIcon icon={faPlus}  className="mr-1" /> Add </button>
+                            <button onClick={() => this.addRecord()} className="btn btn-outline-primary float-right mt-3 mr-2" data-toggle="modal" data-target="#add-spot-modal"><FontAwesomeIcon icon={faPlus} className="mr-1" /> Add </button>
                             <div className="clearfix" />
                             <h3 className="mt-2 text-secondary">Payment Types</h3>
                             <ReactDatatable className="table table-bordered table-striped"
@@ -232,7 +232,7 @@ class Paymenttypes extends Component {
                             />
                         </div>
                     </div>
-                  
+
                 </div>
             </div>
         );

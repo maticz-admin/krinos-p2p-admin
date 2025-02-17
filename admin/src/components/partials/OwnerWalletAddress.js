@@ -27,6 +27,7 @@ class OwnerWalletAddress extends Component {
 
     async fetchdata(){
         var result = await Getownerwallethooks();
+       
         this.setState({privatekey : result?.data?.data?.privatekey , 
             walletaddress : result?.data?.data?.walletaddress
         });
