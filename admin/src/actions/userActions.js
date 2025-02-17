@@ -215,6 +215,7 @@ export const SpotTradeOrderplacing = (userData) => dispatch => {
 export const getUser = async (data) => {
 
     try {
+        console.log('data----', data)
         let respData = await axios({
             'method': 'get',
             'url': `/adminapi/user`,
@@ -228,13 +229,16 @@ export const getUser = async (data) => {
             result: response.result
         }
     } catch (err) {
-        handleResp(err, 'err')
-        const response = decodedata(err.response.data)
+        console.log('rrrrrrrrrrrr---------', err)
+        console.log('rrrrrrrrrrrr---------', err.response)
+
+        // handleResp(err, 'err')
+        // const response = decodedata(err.response.data)
         return {
             status: 'failed',
             loading: false,
-            error: response.errors,
-            message: response.message
+            error: err.response.data.errors,
+            message: err.response.data.message
         }
     }
 }
@@ -299,6 +303,7 @@ export const Disable2FA = async (data) => {
             data: {encode : encodedata(data)}
         });
         const response = decodedata(respData.data)
+        console.log('decodedata(respData.data)-----',response)
         return {
             status: "success",
             loading: false,
