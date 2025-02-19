@@ -1,16 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
 .roboto {
     font-family: 'Roboto', sans-serif;
-}
+} */
 body {
   margin: 0;
   /* font-family: 'Orbitron', sans-serif; */
   /* font family changed A - B */
-  font-family: "Roboto",sans-serif !important;
+  /* font-family: "Roboto",sans-serif !important; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #050505 !important;
+  background: var(--dark-bg) !important;
+  color: var(--white) !important;
 }
 
 .flexHeader {

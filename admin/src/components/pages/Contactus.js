@@ -73,7 +73,7 @@ class Contactus extends Component {
                                 className="btn btn-primary btn-sm"
                                 onClick={() => this.viewRecord(record)}
                                 style={{ marginRight: '5px' }}>
-                                <i class="fa-solid fa-eye"></i>
+                                <i class="fa fa-eye"></i>
                             </button>
                         </Fragment>
                     );
