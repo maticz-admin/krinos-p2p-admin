@@ -55,7 +55,7 @@ class Forgot extends Component {
                     <div className="col-md-12 mx-auto card shadow-lg">
                         <div className="card-body px-1 py-3">
                      <div className="text-center">
-                        <img className="text-center text-primary mt-3" src={authLogo} />
+                        <img className="text-center text-primary mt-3 logo_src" src={authLogo} />
                      </div>
                             <h2 className="text-center text-light mt-3">Forgot Password</h2>
                             <form noValidate onSubmit={this.onSubmit} className="white">
@@ -76,7 +76,9 @@ class Forgot extends Component {
                         {/* <input type="text" className='form-control leftspace' placeholder='Enter Amount'/> */}
                         <input onChange={this.onChange} value={this.state.email}
                         error={errors.email} id="email" type="email"
-                        className={classnames("form-control", { invalid: errors.email })} />
+                        className={classnames("form-control", { invalid: errors.email })}
+                        placeholder="Email"
+                        />
                          <span className='fa fa-envelope right'></span>
                          <p className="text-danger">{errors.email}</p>
                 </div>

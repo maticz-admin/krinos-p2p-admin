@@ -407,9 +407,13 @@ class Users extends Component {
             id: item
         }
 
-        let { status, message } = await Disable2FA(respData)
+        let { status, message } = await Disable2FA(respData);
         if (status) {
-            this.getUserList()
+            let reqData = {
+                page : 1,
+                limit : 10
+            }
+            this.getUserList(reqData)
             toastAlert('success', message, '2FA Disable')
         }
     }

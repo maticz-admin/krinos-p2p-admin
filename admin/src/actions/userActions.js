@@ -215,25 +215,30 @@ export const SpotTradeOrderplacing = (userData) => dispatch => {
 export const getUser = async (data) => {
 
     try {
+        console.log('data----', data)
         let respData = await axios({
             'method': 'get',
             'url': `/adminapi/user`,
             'params': {encode: encodedata(data)}
         });
         const response = decodedata(respData.data);
+        console.log('responseresponse----', response)
         return {
             status: "success",
             loading: false,
             result: response.result
         }
     } catch (err) {
-        handleResp(err, 'err')
-        const response = decodedata(err.response.data)
+        console.log('rrrrrrrrrrrr---------', err)
+        console.log('rrrrrrrrrrrr---------', err.response)
+
+        // handleResp(err, 'err')
+        // const response = decodedata(err.response.data)
         return {
             status: 'failed',
             loading: false,
-            error: response.errors,
-            message: response.message
+            error: err.response.data.errors,
+            message: err.response.data.message
         }
     }
 }
@@ -295,19 +300,24 @@ export const Disable2FA = async (data) => {
         let respData = await axios({
             'method': 'post',
             'url': `/adminapi/disable-2fa`,
-            data
+            data: {encode : encodedata(data)}
         });
+        const response = decodedata(respData.data)
+        console.log('decodedata(respData.data)-----',response)
         return {
             status: "success",
             loading: false,
-            result: respData.data.result,
-            message: respData.data.message
+            result: response.result,
+            message: response.message
         }
     } catch (err) {
+        handleResp(err, 'err')
+        const response = decodedata(err.response.data)
+
         return {
             status: "failed",
             loading: false,
-            error: err.response.data.errors
+            error: response.errors
         }
     }
 }

@@ -90,16 +90,16 @@ const Sidebar = (props) => {
                                                         {
                                                             item && item.childItem  ?
                                                             <>
-                                                                 <a href={item && item.href}  data-toggle="collapse" aria-expanded="false" class="list-group-item list-group-item-action flex-column align-items-start list_grp_active">
-                                                             <div class="d-flex w-100 justyfy-content-start align-items-center">
-                                                             <span class="menu-collapsed">{item && item.header}</span>
+                                                                 <a href={item && item.href}  data-toggle="collapse" aria-expanded="false" className="list-group-item list-group-item-action flex-column align-items-start list_grp_active">
+                                                             <div className="d-flex w-100 justyfy-content-start align-items-center">
+                                                             <span className="menu-collapsed">{item && item.header}</span>
                                                                  {
                                                                      type == 'up' ?
                                                                      <>
              
-                                                                 <span className='ml-auto' ><i class="fa fa-angle-up" aria-hidden="true"></i></span>
+                                                                 <span className='ml-auto' ><i className="fa fa-angle-up" aria-hidden="true"></i></span>
                                                                      </> :
-                                                                 <span className='ml-auto' ><i class="fa fa-angle-down" aria-hidden="true"></i></span>
+                                                                 <span className='ml-auto' ><i className="fa fa-angle-down" aria-hidden="true"></i></span>
              
                                                                  }
                                                              </div>
@@ -110,9 +110,9 @@ const Sidebar = (props) => {
                                                                     if(items.sidemenu){
                                                                         return(
                                                                             <>
-                                                             <div id={items && items.id} class="collapse sidebar-submenu">
-                                                                 <NavLink to={items&&items.path } class="list-group-item list-group-item-action">
-                                                                     <span class="menu-collapsed">{items &&items.name}</span>
+                                                             <div id={items && items.id} className="collapse sidebar-submenu">
+                                                                 <NavLink to={items&&items.path } className="list-group-item list-group-item-action">
+                                                                     <span className="menu-collapsed">{items &&items.name}</span>
                                                                  </NavLink>
                                                              </div>
                                                                             </>
@@ -130,7 +130,10 @@ const Sidebar = (props) => {
                                                    }
                                                    if(isEmpty(restriction)){
                                                  return(
-                                                  <Link to={item.path} className="list-group-item list-group-item-action">{item.name}</Link>
+                                                    <Link to={item.path || '/'} className="list-group-item list-group-item-action">
+                                                    {item.name}
+                                                  </Link>
+                                                  
                                                  )
                                                    }
                                                  

@@ -149,7 +149,7 @@ class SupportReply extends React.Component {
                             </div>
 
                             {/* Typing area */}
-                            <form className="">
+                            <form className="mt-2">
                                 <div className="input-group input-grp-dark">
                                     <textarea
                                         type="text"

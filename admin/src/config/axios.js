@@ -20,7 +20,6 @@ export const removeAuthorization = () => {
 
 export const handleResp = (respData, type = 'success') => {
     try {
-        console.log('respDatarespDatarespDatarespData-----', respData);
         // return false;
         if (isLogin() && type == 'error' && respData && respData.response && respData.response.status == 401) {
             removeAuthToken()

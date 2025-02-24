@@ -6,10 +6,10 @@ export const Addoffertaghook = async (data) => {
         let respData = await axios({
             'method': 'post',
             'url': `/p2papiadmin/add-offertag`,
-            'data': {encode: encodedata(data)}
+            'data': { encode: encodedata(data) }
         });
         const response = decodedata(respData.data);
-        return {data: response}
+        return { data: response }
     } catch (err) {
         handleResp(err, 'err')
         const response = decodedata(err.response.data)
@@ -46,11 +46,12 @@ export const Getoffertaghook = async (data) => {
         let respData = await axios({
             'method': 'get',
             'url': `/p2papiadmin/get-offertag`,
-            'params': {encode: encodedata(data)}
+            'params': { encode: encodedata(data) }
         });
         const response = decodedata(respData.data)
-        return {data: response}
+        return { data: response }
     } catch (err) {
+        console.log('eeeerrrr-----', err.response)
         handleResp(err, 'err')
         const response = decodedata(err.response.data)
         return {
@@ -67,7 +68,7 @@ export const Getofferhistoryhook = async (data) => {
         let respData = await axios({
             'method': 'get',
             'url': `/p2papiadmin/get-offer-history`,
-            'params': {encode: encodedata(data)}
+            'params': { encode: encodedata(data) }
         });
         if (data.export == 'csv') {
             const url = window.URL.createObjectURL(new Blob([respData.data]));
@@ -87,7 +88,7 @@ export const Getofferhistoryhook = async (data) => {
             link.click();
         }
         const response = decodedata(respData.data)
-        return {data: response}
+        return { data: response }
     } catch (err) {
         handleResp(err, 'err')
         const response = decodedata(err.response.data)
@@ -106,7 +107,7 @@ export const Gettradehistoryhook = async (data) => {
         let respData = await axios({
             'method': 'get',
             'url': `/p2papiadmin/get-trade-history`,
-            'params': {encode: encodedata(data)}
+            'params': { encode: encodedata(data) }
         });
 
         if (data.export == 'csv') {
@@ -128,7 +129,7 @@ export const Gettradehistoryhook = async (data) => {
         }
         // console.log('response----', respData)
         const response = decodedata(respData.data);
-        return {data: response}
+        return { data: response }
     } catch (err) {
         handleResp(err, 'err')
         const response = decodedata(err.response.data)
@@ -146,10 +147,11 @@ export const Getpaymenttypehook = async (data) => {
         let respData = await axios({
             'method': 'get',
             'url': `/p2papiadmin/get-paymenttypes`,
-            'params': data //{encode: encodedata(data)}
+            'params': { encode: encodedata(data) }
         });
-
-        return respData
+        const response = decodedata(respData.data)
+        
+        return { data: response }
     } catch (err) {
         return {
             status: "failed",
@@ -166,16 +168,19 @@ export const Addpaymenttypeshooks = async (data) => {
         let respData = await axios({
             'method': 'post',
             'url': `/p2papiadmin/add-paymenttypes`,
-            'data': data
+            'data': {encode: encodedata(data)}
         });
-
-        return respData
+        const response = decodedata(respData.data)
+        return {data: response}
     } catch (err) {
+       
+        const response = decodedata(err?.response?.data)
+
         return {
             status: "failed",
             loading: false,
-            message: err?.response?.data?.message,
-            error: err?.response?.data?.errors
+            message: response.message,
+            error: response.errors
         }
     }
 }
@@ -185,16 +190,18 @@ export const Editpaymenttypehooks = async (data) => {
         let respData = await axios({
             'method': 'post',
             'url': `/p2papiadmin/edit-paymenttypes`,
-            'data': data
+            'data': {encode: encodedata(data)}
         });
-
-        return respData;
+        const response = decodedata(respData.data)
+        return {data: response};
     } catch (err) {
+        const response = decodedata(err.response.data)
+
         return {
             status: "failed",
             loading: false,
-            message: err.response.data.message,
-            error: err.response.data.errors
+            message: response.message,
+            error: response.errors
         }
     }
 }
@@ -204,10 +211,10 @@ export const Addownerwallethooks = async (data) => {
         let respData = await axios({
             'method': 'post',
             'url': `/p2papiadmin/updatewallet`,
-            'data': {encode: encodedata(data)}
+            'data': { encode: encodedata(data) }
         });
         const response = decodedata(respData.data);
-        return {data: response}
+        return { data: response }
     } catch (err) {
         handleResp(err, 'err')
         const response = decodedata(err.response.data)
@@ -222,6 +229,7 @@ export const Addownerwallethooks = async (data) => {
 
 export const Getownerwallethooks = async (data) => {
     try {
+        
         let respData = await axios({
             'method': 'get',
             'url': `/p2papiadmin/getownerwallet`,
