@@ -342,7 +342,7 @@ class CurrencyAddModal extends React.Component {
 
               <div className="row mt-2">
                 <div className="col-md-3">
-                  <label>coinpayment Symbol</label>
+                  <label>Bitgo Symbol</label>
                 </div>
                 <div className="col-md-9">
                   <input

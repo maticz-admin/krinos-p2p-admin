@@ -1,7 +1,17 @@
 let key = {};
-let env = 'productio' //production or local
+let env = 'demo' //production or local
 if (env == 'production') {
     const API_URL = 'https://api.tossvtoss.com/'
+    key = {
+        secretOrKey: "FxUum76z",
+        Recaptchakey: "6LeKwCYjAAAAAMbORefOGhr-1AAXaTNTkL7MBJrV", //local
+        API_URL: API_URL,
+        FRONT_URL: 'https://www.tossvtoss.com',
+        ADMIN_URL: 'https://contorls.tossvtoss.com/' ,
+        getGeoInfo: "https://ipapi.co/json/",
+    };
+} else if (env == 'demo') {
+    const API_URL = 'https://krinosp2p-backend.maticz.in/'
     key = {
         secretOrKey: "FxUum76z",
         Recaptchakey: "6LeKwCYjAAAAAMbORefOGhr-1AAXaTNTkL7MBJrV", //local
@@ -18,9 +28,7 @@ else {
         Recaptchakey: "6LeHezUfAAAAAE_uuY_HFN5HoEVsQv8bpyC3xTat", //local
         API_URL: `${API_URL}:2053`,
         TRADE_URL: 'http://54.211.230.83:8081/api/trade',
-
         getGeoInfo: "https://ipapi.co/json/",
-
         socialMedia: {
             facebook: {
                 appId: "1034988646970193"
@@ -33,8 +41,8 @@ else {
                 state: '123456'
             }
         },
-
     };
 }
+
 
 export default key;

@@ -48,7 +48,6 @@ export const addCurrency = async (reqData) => {
             'method': 'post',
             // 'data': {encode: encodedata(reqData)}
             'data': reqData
-
         });
         // const response = decodedata(respData.data);
         // console.log('response-----', response)
