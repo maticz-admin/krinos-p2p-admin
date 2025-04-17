@@ -18,7 +18,7 @@ import { Link, withRouter } from 'react-router-dom';
 import SupportReply from "./SupportReply";
 
 class Support extends Component {
-    
+
     constructor(props) {
         super(props);
 
@@ -77,12 +77,12 @@ class Support extends Component {
                 align: "left",
                 sortable: false,
                 cell: record => {
-                    console.log('record?.roomid-------',record)
+                    console.log('record?.roomid-------', record)
 
-                    if(record.status == "closed"){
+                    if (record.status == "closed") {
                         return "-"
                     }
-                    if(record.status == "open"){
+                    if (record.status == "open") {
 
                         return (
                             <Fragment>
@@ -93,7 +93,7 @@ class Support extends Component {
                                     <i className="fa fa-reply"></i>
                                 </button>
 
-                                {record?.roomid &&<a target="_blank" href={`${config?.FRONT_URL}${record?.roomid}`}
+                                {record?.roomid && <a target="_blank" href={`${config?.FRONT_URL}${record?.roomid}`}
                                     className="btn btn-primary btn-sm"
                                     // onClick={() => this.viewchat(record)}
                                     style={{ marginRight: '5px' }}>
@@ -122,7 +122,7 @@ class Support extends Component {
                     previous: "<",
                     next: ">",
                     last: ">>"
-                  }
+                }
             },
             show_length_menu: false,
             show_filter: true,
@@ -147,15 +147,17 @@ class Support extends Component {
     }
 
     componentDidMount() {
-        const { page, limit } = this.state;
+        const { page, limit, search } = this.state;
         let reqData = {
             page,
             limit,
+            search: search || '',  // Add this line
             export: 'false'
         }
 
-        this.getData(reqData)
-    };
+        this.getData(reqData);
+    }
+
 
     async viewchat(record) {
         // window.location.href = window.location.origin ==
@@ -285,7 +287,7 @@ class Support extends Component {
 
 
 
-                                <button className='btn btn-info mr-2 mb-2' onClick={this.DownoladeCSV}style={{ width: '118px', height: '35px', fontSize: '13px' }}>Download(CSV)</button>
+                                <button className='btn btn-info mr-2 mb-2' onClick={this.DownoladeCSV} style={{ width: '118px', height: '35px', fontSize: '13px' }}>Download(CSV)</button>
 
                             ) : (
                                 ""
@@ -298,6 +300,8 @@ class Support extends Component {
                             ) : (
                                 ""
                             )}
+                           
+
                             <ReactDatatable className="table table-bordered table-striped  support_table"
                                 config={this.config}
                                 records={this.state.records}

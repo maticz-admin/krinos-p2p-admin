@@ -63,7 +63,7 @@ const SupportReply = () => {
         setLoader(true);
 
         const reqData = {
-            ticketId: records.tickerId,
+            tickerId: records.tickerId,
             receiverId: records.userId,
             message: formValue.message,
         };

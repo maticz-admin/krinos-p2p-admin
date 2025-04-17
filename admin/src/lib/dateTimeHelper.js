@@ -44,7 +44,7 @@ export const dateTimeFormat = (dateTime, format = 'YYYY-MM-DD HH:mm:ss') => {
     }
 }
 
-export const momentFormat = (dateTime,format='YYYY-MM-DD HH:mm') => {
+export const momentFormat = (dateTime,format='YYYY-MM-DD HH:mm A') => {
     try{
         if (!isEmpty(dateTime)) {
             let newDateTime = new Date(dateTime);
