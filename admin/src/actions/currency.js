@@ -48,7 +48,6 @@ export const addCurrency = async (reqData) => {
             'method': 'post',
             // 'data': {encode: encodedata(reqData)}
             'data': reqData
-
         });
         // const response = decodedata(respData.data);
         // console.log('response-----', response)
@@ -59,7 +58,7 @@ export const addCurrency = async (reqData) => {
         }
     } catch (err) {
         handleResp(err, 'err')
-        const response = decodedata(err.response.data)
+        const response = err.response.data //decodedata(err.response.data)
         return {
             status: 'failed',
             loading: false,
@@ -85,7 +84,7 @@ export const updateCurrency = async (reqData) => {
         }
     } catch (err) {
         handleResp(err, 'err')
-        const response = decodedata(err.response.data)
+        const response = err.response.data //decodedata(err.response.data)
         return {
             status: 'failed',
             loading: false,

@@ -26,76 +26,85 @@ class UserKyc extends Component {
                 cell : (record) =>  record?.email ? record?.email :   (record?.phoneCode?.toString() + record?.phoneNo?.toString())
             },
             {
-                key: "identity",
-                text: "Identity Document",
-                className: "subject",
+                // key: "email",
+                text: "Status",
+                className: "identifier",
                 align: "left",
                 sortable: true,
-                cell: record => {
-                    if (record.idProof.status == 'new') {
-                        return '-'
-                    } else 
-                    // if (record.idProof.status == 'pending') 
-                    {
-                        return (
-                            <>
-                                {record.idProof.status}
-                                <span>
-                                    <button
-                                        className="btn btn-primary btn-sm ml-2"
-                                        onClick={() => this.editRecord(record, 'idProof')}
-                                        style={{ marginRight: '5px' }}
-                                    >
-                                        View
-                                    </button>
-                                </span>
-                            </>
-                        )
-                    } 
-                    // else {
-                    //     return (
-                    //         <>
-                    //             {record.idProof.status}
-
-                    //         </>
-                    //     )
-                    // }
-                }
+                cell : (record) =>  console.log("record" , record)
+                //record?.email ? record?.email :   (record?.phoneCode?.toString() + record?.phoneNo?.toString())
             },
-            {
-                key: "identity",
-                text: "Residential Document",
-                className: "subject",
-                align: "left",
-                sortable: true,
-                cell: record => {
-                    if (record.addressProof.status == 'new') {
-                        return '-'
-                    } else if (record.addressProof.status == 'pending') {
-                        return (
-                            <>
-                                {record.addressProof.status}
-                                <span>
-                                    <button
-                                        className="btn btn-primary btn-sm ml-2"
-                                        onClick={() => this.editRecord(record, 'addressProof')}
-                                        style={{ marginRight: '5px' }}
-                                    >
-                                        View
-                                    </button>
-                                </span>
-                            </>
-                        )
-                    } else {
-                        return (
-                            <>
-                                {record.addressProof.status}
+            // {
+            //     key: "identity",
+            //     text: "Identity Document",
+            //     className: "subject",
+            //     align: "left",
+            //     sortable: true,
+            //     cell: record => {
+            //         if (record.idProof.status == 'new') {
+            //             return '-'
+            //         } else 
+            //         // if (record.idProof.status == 'pending') 
+            //         {
+            //             return (
+            //                 <>
+            //                     {record.idProof.status}
+            //                     <span>
+            //                         <button
+            //                             className="btn btn-primary btn-sm ml-2"
+            //                             onClick={() => this.editRecord(record, 'idProof')}
+            //                             style={{ marginRight: '5px' }}
+            //                         >
+            //                             View
+            //                         </button>
+            //                     </span>
+            //                 </>
+            //             )
+            //         } 
+            //         // else {
+            //         //     return (
+            //         //         <>
+            //         //             {record.idProof.status}
 
-                            </>
-                        )
-                    }
-                }
-            },
+            //         //         </>
+            //         //     )
+            //         // }
+            //     }
+            // },
+            // {
+            //     key: "identity",
+            //     text: "Residential Document",
+            //     className: "subject",
+            //     align: "left",
+            //     sortable: true,
+            //     cell: record => {
+            //         if (record.addressProof.status == 'new') {
+            //             return '-'
+            //         } else if (record.addressProof.status == 'pending') {
+            //             return (
+            //                 <>
+            //                     {record.addressProof.status}
+            //                     <span>
+            //                         <button
+            //                             className="btn btn-primary btn-sm ml-2"
+            //                             onClick={() => this.editRecord(record, 'addressProof')}
+            //                             style={{ marginRight: '5px' }}
+            //                         >
+            //                             View
+            //                         </button>
+            //                     </span>
+            //                 </>
+            //             )
+            //         } else {
+            //             return (
+            //                 <>
+            //                     {record.addressProof.status}
+
+            //                 </>
+            //             )
+            //         }
+            //     }
+            // },
             // {
             //     key: "type",
             //     text: "Verification Type",

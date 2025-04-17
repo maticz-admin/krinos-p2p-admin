@@ -129,7 +129,7 @@ export const getMessage = async (data) => {
             'url': `/adminapi/ticketMessage`,
             'params': data
         });
-        console.log('respData------', respData)
+    
         return {
             success: true,
             status: "success",
@@ -137,8 +137,7 @@ export const getMessage = async (data) => {
             result: respData.data.result
         }
     } catch (err) {
-        console.log('respData------', err.response.data)
-
+      
         return {
             success: false,
             status: "failed",
@@ -150,6 +149,7 @@ export const getMessage = async (data) => {
 
 export const replyMsg = async (data) => {
     try {
+        console.log('datadata------', data)
         let respData = await axios({
             'method': 'put',
             'url': `/adminapi/ticketMessage`,

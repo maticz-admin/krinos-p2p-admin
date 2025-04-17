@@ -152,7 +152,7 @@ class Login extends Component {
                     <div className="col-md-12 mx-auto">
                         <div className="card shadow-lg">
                         <div className="card-body p-3">
-                            <center className="pt-3"><img src={authLogo} className="img-fluid" alt="" /></center>
+                            <center className="pt-3"><img src={authLogo} className="img-fluid logo_src" alt="" /></center>
                             <h2 className="text-center text-light mt-3">Login</h2>
                             <form noValidate onSubmit={this.onSubmit} className="white">
                             <div className='floatinglabel my-4'>
@@ -165,6 +165,7 @@ class Login extends Component {
                                 id="email"
                                 type="email"
                                 name='email'
+                                placeholder="Email"
                                 className={classnames("form-control", {
                                     invalid: errors.email
                                 })}
@@ -180,6 +181,7 @@ class Login extends Component {
                                     value={this.state.password}
                                     error={errors.password}
                                     id="password"
+                                    placeholder="Password"
                                     type={formvalue?.showPassword ? "text" : "password"}
                                     name='password'
                                     className={classnames("form-control", {

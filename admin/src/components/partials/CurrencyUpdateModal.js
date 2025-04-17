@@ -41,7 +41,8 @@ const initialFormValue = {
   commisionfee : 0,
   coinpaymentsymbol : "",
   key : "",
-  api : ""
+  api : "",
+  "bitgosymbol" : ""
 };
 
 class CurrencyUpdateModal extends React.Component {
@@ -77,7 +78,8 @@ class CurrencyUpdateModal extends React.Component {
         depositStatus: record.depositStatus,
         withdrawStatus: record.withdrawStatus,
         commisionfee : record.commisionfee,
-        coinpaymentsymbol : record.coinpaymentsymbol
+        coinpaymentsymbol : record.coinpaymentsymbol,
+        "bitgosymbol" : record?.bitgosymbol
       };
       if (record.type == "fiat") {
         formData["bankName"] = record.bankDetails.bankName;
@@ -168,6 +170,7 @@ class CurrencyUpdateModal extends React.Component {
       formData.append("withdrawStatus", formValue.withdrawStatus);
       formData.append("commisionfee" , formValue.commisionfee);
       formData.append("coinpaymentsymbol" , formValue.coinpaymentsymbol);
+      formData.append("bitgosymbol" , formValue?.bitgosymbol)
       formData.append("api" , formValue.api);
       formData.append("key" , formValue.key);
 
@@ -220,6 +223,7 @@ class CurrencyUpdateModal extends React.Component {
       withdrawStatus,
       commisionfee,
       coinpaymentsymbol,
+      bitgosymbol,
       api , 
       key
     } = this.state.formValue;
@@ -322,21 +326,21 @@ class CurrencyUpdateModal extends React.Component {
 
               <div className="row mt-2">
                 <div className="col-md-3">
-                  <label>coinpayment Symbol</label>
+                  <label>Bitgo Symbol</label>
                 </div>
                 <div className="col-md-9">
                   <input
-                    name="coinpaymentsymbol"
+                    name="bitgosymbol"
                     type="text"
-                    value={coinpaymentsymbol}
+                    value={bitgosymbol}
                     onChange={this.handleChange}
-                    error={errors.coinpaymentsymbol}
+                    error={errors.bitgosymbol}
                     className={classnames("form-control", {
-                      invalid: errors.coinpaymentsymbol,
+                      invalid: errors.bitgosymbol,
                     })}
                   />
                   <span className="text-danger">
-                    {errors.coinpaymentsymbol}
+                    {errors.bitgosymbol}
                   </span>
                 </div>
               </div>
@@ -702,9 +706,11 @@ class CurrencyUpdateModal extends React.Component {
                     as="select"
                     custom
                   >
-                    <option value={"local"}>Local</option>
-                    <option value={"binance"}>Binance</option>
-                    <option value={"coin_payment"}>Coinpayment</option>
+                    {/* <option value={"local"}>Local</option> */}
+                    {/* <option value={"binance"}>Binance</option> */}
+                    {/* <option value={"coin_payment"}>Coinpayment</option> */}
+                    <option value={'bitgo'}>Bitgo</option>
+
                   </Form.Control>
                   <span className="text-danger">{errors.depositType}</span>
                 </div>
