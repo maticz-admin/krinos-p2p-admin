@@ -77,10 +77,13 @@ class Support extends Component {
                 align: "left",
                 sortable: false,
                 cell: record => {
+                    console.log('record?.roomid-------',record)
+
                     if(record.status == "closed"){
                         return "-"
                     }
                     if(record.status == "open"){
+
                         return (
                             <Fragment>
                                 <button

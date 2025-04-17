@@ -5,7 +5,7 @@ if (env == "ngrok") {
        baseUrl = "http://ef7a478bafd4.ngrok.io/";
 }
 if (env == "test") {
-       baseUrl = "http://localhost:2053/";
+       baseUrl = "http://localhost:2054/";
 }
 
 
