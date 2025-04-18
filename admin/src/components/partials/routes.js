@@ -328,8 +328,16 @@ const route = [
         exact: true,
         sidemenu: true,
         component: Paymenttypes
-    }
+    },
 
+    {
+        path: "/passbookHistory/:id",
+        name: 'PassBookHistory',
+        component: PassBookHistory,
+        exact: true,
+        sidemenu: true,
+    }
+    
 ]
 
 export default route

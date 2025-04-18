@@ -1,5 +1,6 @@
 // import config
 import axios from '../config/axios';
+import { decodedata, encodedata } from '../config/secure';
 
 export const spotOrderHistory = async (data) => {
 
@@ -169,22 +170,27 @@ export const perpetualTradeHistory = async (data) => {
 export const passBookHistory = async (data) => {
 
     try {
+        console.log('data-----', data)
         let respData = await axios({
             'method': 'get',
             'url': `/adminapi/userPassBookHistory`,
-            'params': data
+            'params': {encode: encodedata(data)}
         });
+        const response = decodedata(respData.data)
         return {
             status: "success",
             loading: false,
-            result: respData.data.result,
-            count: respData.data.count
+            result: response.result,
+            count: response.count
         }
     } catch (err) {
+
+        const response = decodedata(err.response.data)
+      
         return {
             status: "failed",
             loading: false,
-            error: err.response.data.errors
+            error: response.errors
         }
     }
 }

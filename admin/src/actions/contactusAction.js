@@ -49,7 +49,7 @@ export const AdminMsg = async (data) => {
         return {
             status: 'failed',
             loading: false,
-            errors:response.message,
+            errors:response.errors,
             message:response.message
         }
     }

@@ -12,7 +12,7 @@ import { passBookHistory } from "../../actions/reportActions";
 // import jsPDF from "jspdf";
 // import "jspdf-autotable";
 
-class tradehistory extends Component {
+class PassBookHistory extends Component {
   constructor(props) {
     super(props);
 
@@ -132,8 +132,8 @@ class tradehistory extends Component {
     // this.exportPDF = this.exportPDF.bind(this);
   }
   componentDidMount() {
-    const { userId } = this.props.match.params;
- 
+    const { id } = this.props.match.params;
+    const userId = id
     const { page, limit } = this.state;
     let reqData = {
       userId,
@@ -144,13 +144,14 @@ class tradehistory extends Component {
   }
 
   handlePagination(index) {
-    const { userId } = this.props.match.params;
+    const { id } = this.props.match.params;
+    const userId = id
 
     let reqData = {
       page: index.page_number,
       limit: index.page_size,
       search: index.filter_value,
-      userId: userId,
+      userId: userId ,
     };
     this.getData(reqData);
     this.setState({
@@ -282,4 +283,4 @@ class tradehistory extends Component {
   }
 }
 
-export default tradehistory;
+export default PassBookHistory;
