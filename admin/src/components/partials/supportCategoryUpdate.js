@@ -60,6 +60,7 @@ class categoryUpdateModal extends React.Component {
             let { status, loading, result, error, message } = await categoryUpdate(reqData);
             if (status == 'success') {
                 fetchData();
+                window.location.reload()
                 toastAlert('success', message, 'addTemplate');
                 this.handleClose()
             } else {

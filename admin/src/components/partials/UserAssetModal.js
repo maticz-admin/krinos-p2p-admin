@@ -49,7 +49,8 @@ class UserAssetModal extends React.Component {
                 text: "p2p Balance",
                 className: "email",
                 align: "left",
-                sortable: true
+                sortable: true,
+                cell: (record) =>  record.p2pBal ? record.p2pBal : 0,
             }
         ];
 

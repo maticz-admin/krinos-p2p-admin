@@ -64,7 +64,7 @@ class ContactUpdateModal extends React.Component {
     }
     handleClose(e) {
         e.preventDefault()
-        window.location.reload()
+        // window.location.reload()
         $('#view-contact-modal').modal('hide')
     }
 

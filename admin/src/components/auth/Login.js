@@ -119,12 +119,13 @@ class Login extends Component {
         };
         try {
             const { status, loading, message, error } = await login(reqData, dispatch);
+            console.log('error-----', error)
             if (status == 'success') {
                 history.push("/dashboard");
                 toastAlert('success', message, 'login')
             } else {
                 if (error) {
-                    this.setState({ errors: error })
+                    this.setState({ errors: error.errors })
                 }
                 toastAlert('error', message, 'login')
             }
@@ -170,8 +171,8 @@ class Login extends Component {
                                     invalid: errors.email
                                 })}
                                        />
-                                       <span className='fa fa-envelope right'></span>
-                                       {/* <p className="text-danger">{errors.email}</p> */}
+                                       {/* <span className='fa fa-envelope right'></span> */}
+                                       <p className="text-danger">{errors.email}</p>
                                 </div>
 
                                 <div className='floatinglabel my-4'>
@@ -189,6 +190,7 @@ class Login extends Component {
                                     })}
                                     
                                 />
+                                <span className="text-danger">{errors.password}</span> 
                                  {/* <span className='fa fa-eye right cursor'></span> */}
                               <Link className='right view_eyw_icon_color' onClick={(e) => {
                             e.preventDefault();

@@ -62,9 +62,10 @@ class ContactUpdateModal extends React.Component {
             this.setState({ validErr: {} })
         }
     }
-    handleClose(e) {
+   async handleClose(e) {
         e.preventDefault()
-        window.location.reload()
+        // window.location.reload()
+        
         $('#update-contact-modal').modal('hide')
     }
 

@@ -15,6 +15,7 @@ import { toastAlert } from '../../lib/toastAlert';
 import isEmpty from '../../lib/isEmpty';
 import config from '../../config';
 import { momentFormat } from '../../lib/dateTimeHelper';
+import { viewUserProfile } from '../../actions/admin';
 
 const initialFormValue = {
     message: "",
@@ -28,9 +29,17 @@ const SupportReply = () => {
     const [formValue, setFormValue] = useState(initialFormValue);
     const [errors, setErrors] = useState({});
     const [loader, setLoader] = useState(false);
+    const [profileImage, setProfileImage] = useState()
+    const viewUserProfiles = async () => {
+        try {
+        } catch (error) {
 
+        }
+    }
     useEffect(() => {
         fetchTicketMessage();
+
+
     }, []);
 
     const fetchTicketMessage = async () => {
@@ -39,7 +48,9 @@ const SupportReply = () => {
             const reqData = { ticketId: id };
             console.log('id-----', id)
             const { status, loading, result, success } = await getMessage(reqData);
-            console.log('success-------', success)
+            const profiles = await viewUserProfile({ id: result.userId });
+            console.log('success-------', profiles.profileImage)
+            setProfileImage(profiles.profileImage)
             setLoader(loading);
             if (success) {
                 setRecords(result);
@@ -109,9 +120,18 @@ const SupportReply = () => {
                                             key={key}
                                             className={`media w-50 ${isAdmin ? "ml-auto" : ""} mb-3`}
                                         >
-                                            {!isAdmin && (
+
+                                            {!isAdmin ? (
                                                 <img
                                                     src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg"
+                                                    alt="user"
+                                                    width={50}
+                                                    className="rounded-circle"
+                                                />
+                                            ) : (
+
+                                                <img
+                                                    src={`${config.API_URL}api/account/profile${profileImage}`}
                                                     alt="user"
                                                     width={50}
                                                     className="rounded-circle"

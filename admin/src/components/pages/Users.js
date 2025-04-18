@@ -342,8 +342,14 @@ class Users extends Component {
             id: value
         }
         const { status, message } = await UpdateUser(Data)
-        if (status) {
-            this.getUserList()
+        
+        if (status == 'success') {
+            const { page, limit } = this.state;
+            let reqData = {
+                page,
+                limit
+            }
+            this.getUserList(reqData)
             toastAlert('success', message, 'activeUser')
         }
     }

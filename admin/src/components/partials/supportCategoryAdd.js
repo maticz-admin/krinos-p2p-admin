@@ -45,6 +45,7 @@ class categoryAddModal extends React.Component {
             let { status, loading, error, message } = await categoryAdd(reqData);
             if (status == 'success') {
                 fetchData();
+                window.location.reload()
                 toastAlert('success', message, 'addTemplate');
                 this.handleClose()
             } else {

@@ -188,6 +188,7 @@ class App extends Component {
 
                                     })
                                 }
+                                {/* <ConditionRoute exact path="/tradehistory" component={TradeHistory} type={"private"} /> */}
 
                                 {/* <ConditionRoute exact path="/" component={Login} type={"auth"} />
                          <ConditionRoute exact path="/dashboard" component={Dashboard} type={"private"} /> */}

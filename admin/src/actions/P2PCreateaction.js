@@ -153,11 +153,13 @@ export const Getpaymenttypehook = async (data) => {
         
         return { data: response }
     } catch (err) {
+        handleResp(err, 'err')
+        const response = decodedata(err.response.data)
         return {
             status: "failed",
             loading: false,
-            message: err.response.data.message,
-            error: err.response.data.errors
+            message: response.message,
+            error: response.errors
         }
     }
 }

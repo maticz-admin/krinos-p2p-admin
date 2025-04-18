@@ -137,6 +137,7 @@ export const faqAdd = async (data) => {
             result: response.result
         }
     } catch (err) {
+        
         handleResp(err, 'err')
         const response = decodedata(err.response.data)
         return {
