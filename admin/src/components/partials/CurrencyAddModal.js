@@ -35,6 +35,7 @@ const initialFormValue = {
   'payment': [],
  'upiInputValue':0,
  'commisionfee' : 0,
+ 'buyercommisionfee' : 0,
  "coinpaymentsymbol" : "",
  "api" : "",
  "key" : "",
@@ -155,6 +156,7 @@ class CurrencyAddModal extends React.Component {
       depositStatus,
       withdrawStatus,
       commisionfee,
+      buyercommisionfee,
       coinpaymentsymbol,
       bitgosymbol
 
@@ -192,12 +194,13 @@ class CurrencyAddModal extends React.Component {
     formData.append("depositStatus",depositStatus)
     formData.append("withdrawStatus",withdrawStatus)
     formData.append("commisionfee" , commisionfee);
+    formData.append("buyercommisionfee" , buyercommisionfee)
     formData.append("coinpaymentsymbol", coinpaymentsymbol)
     formData.append("bitgosymbol" , bitgosymbol)
     this.setState({ loader: true })
     try {
       const { status, loading, message, error } = await addCurrency(formData);
-      
+      console.log("status, loading, message, error" , status, loading, message, error);
       this.setState({ loader: loading })
       if (status == 'success') {
         this.handleClose()
@@ -239,6 +242,7 @@ class CurrencyAddModal extends React.Component {
       depositStatus,
       withdrawStatus,
       commisionfee,
+      buyercommisionfee,
       coinpaymentsymbol,
       api,
       key,
@@ -346,7 +350,7 @@ class CurrencyAddModal extends React.Component {
               </div>
 
 
-              <div className="row mt-2">
+              {/* <div className="row mt-2">
                 <div className="col-md-3">
                   <label>Coin Payment Symbol</label>
                 </div>
@@ -366,7 +370,7 @@ class CurrencyAddModal extends React.Component {
                   </span>
                 </div>
 
-                </div>
+                </div> */}
               <div className="row mt-2">
                 <div className="col-md-3">
                   <label>Bitgo Symbol</label>
@@ -803,10 +807,10 @@ class CurrencyAddModal extends React.Component {
               
               </>}
 
-
+              
               <div className="row mt-2">
                 <div className="col-md-3">
-                  <label htmlFor="minimum">Commision Fee</label>
+                  <label htmlFor="minimum">Seller Commision Fee</label>
                 </div>
                 <div className="col-md-9">
                   <input
@@ -820,6 +824,26 @@ class CurrencyAddModal extends React.Component {
                     })}
                   />
                   <span className="text-danger">{errors.commisionfee}</span>
+                </div>
+              </div>
+
+
+              <div className="row mt-2">
+                <div className="col-md-3">
+                  <label htmlFor="minimum">Buyer Commision Fee</label>
+                </div>
+                <div className="col-md-9">
+                  <input
+                    name="buyercommisionfee"
+                    type="text"
+                    value={buyercommisionfee}
+                    onChange={this.handleChange}
+                    error={errors.buyercommisionfee}
+                    className={classnames("form-control", {
+                      invalid: errors.buyercommisionfee,
+                    })}
+                  />
+                  <span className="text-danger">{errors.buyercommisionfee}</span>
                 </div>
               </div>
 

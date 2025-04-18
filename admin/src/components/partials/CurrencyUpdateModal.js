@@ -39,6 +39,7 @@ const initialFormValue = {
   depositminlimit: 0,
   isPrimary: false,
   commisionfee : 0,
+  buyercommisionfee : 0,
   coinpaymentsymbol : "",
   key : "",
   api : "",
@@ -78,6 +79,7 @@ class CurrencyUpdateModal extends React.Component {
         depositStatus: record.depositStatus,
         withdrawStatus: record.withdrawStatus,
         commisionfee : record.commisionfee,
+        buyercommisionfee : record?.buyercommisionfee,
         coinpaymentsymbol : record.coinpaymentsymbol,
         "bitgosymbol" : record?.bitgosymbol
       };
@@ -169,6 +171,7 @@ class CurrencyUpdateModal extends React.Component {
       formData.append("depositStatus", formValue.depositStatus);
       formData.append("withdrawStatus", formValue.withdrawStatus);
       formData.append("commisionfee" , formValue.commisionfee);
+      formData.append("buyercommisionfee" , formValue.buyercommisionfee)
       formData.append("coinpaymentsymbol" , formValue.coinpaymentsymbol);
       formData.append("bitgosymbol" , formValue?.bitgosymbol)
       formData.append("api" , formValue.api);
@@ -222,6 +225,7 @@ class CurrencyUpdateModal extends React.Component {
       depositStatus,
       withdrawStatus,
       commisionfee,
+      buyercommisionfee,
       coinpaymentsymbol,
       bitgosymbol,
       api , 
@@ -797,7 +801,7 @@ class CurrencyUpdateModal extends React.Component {
 
               <div className="row mt-2">
                 <div className="col-md-3">
-                  <label htmlFor="minimum">Commision Fee</label>
+                  <label htmlFor="minimum">Seller Commision Fee</label>
                 </div>
                 <div className="col-md-9">
                   <input
@@ -811,6 +815,27 @@ class CurrencyUpdateModal extends React.Component {
                     })}
                   />
                   <span className="text-danger">{errors.commisionfee}</span>
+                </div>
+              </div>
+
+              
+
+              <div className="row mt-2">
+                <div className="col-md-3">
+                  <label htmlFor="minimum">Buyer Commision Fee</label>
+                </div>
+                <div className="col-md-9">
+                  <input
+                    name="buyercommisionfee"
+                    type="text"
+                    value={buyercommisionfee}
+                    onChange={this.handleChange}
+                    error={errors.buyercommisionfee}
+                    className={classnames("form-control", {
+                      invalid: errors.buyercommisionfee,
+                    })}
+                  />
+                  <span className="text-danger">{errors.buyercommisionfee}</span>
                 </div>
               </div>
 
