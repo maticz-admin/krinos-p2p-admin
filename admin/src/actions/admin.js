@@ -53,11 +53,12 @@ export const login = async (data, dispatch) => {
 
         handleResp(err, 'error');
         const response = decodedata(err.response.data);
+        console.log('response-------', response)
         return {
             status: 'failed',
             loading: false,
             message: response.message,
-            error: response.errors
+            error: response
         }
     }
 }
@@ -290,6 +291,7 @@ export const editProfile = async (data) => {
     } catch (err) {
         handleResp(err, 'err')
         const response = decodedata(err.response.data)
+       
         return {
             status: response.status,
             loading: false,
@@ -301,3 +303,26 @@ export const editProfile = async (data) => {
 
 
 
+export const viewUserProfile = async (data) => {
+    try {
+        console.log('data-------', data)
+      let respData = await axios({
+        method: "post",
+        url: `/api/profileImage`,
+        data: {encode: encodedata(data)}
+      });
+      const response = decodedata(respData.data)
+      console.log('respData-----', response);
+      return {
+        status: "success",
+        loading: false,
+        result: response.result
+      };
+    } catch (err) {
+      handleResp(err, 'error')
+      return {
+        status: "failed",
+        loading: false,
+      };
+    }
+  };

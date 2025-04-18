@@ -41,6 +41,7 @@ class EditProfileModel extends React.Component {
             name: this.state.name
         }
         let { status, message } = await editProfile(data)
+        
         if (status) {
             toastAlert('success', message)
             const { onHide, fetchData } = this.props;

@@ -215,30 +215,29 @@ export const SpotTradeOrderplacing = (userData) => dispatch => {
 export const getUser = async (data) => {
 
     try {
-        console.log('data----', data)
+       
         let respData = await axios({
             'method': 'get',
             'url': `/adminapi/user`,
             'params': {encode: encodedata(data)}
         });
         const response = decodedata(respData.data);
-        console.log('responseresponse----', response)
+       
         return {
             status: "success",
             loading: false,
             result: response.result
         }
     } catch (err) {
-        console.log('rrrrrrrrrrrr---------', err)
-        console.log('rrrrrrrrrrrr---------', err.response)
+       
 
-        // handleResp(err, 'err')
-        // const response = decodedata(err.response.data)
+        handleResp(err, 'err')
+        const response = decodedata(err.response.data)
         return {
             status: 'failed',
             loading: false,
-            error: err.response.data.errors,
-            message: err.response.data.message
+            error: response.errors,
+            message: response.message
         }
     }
 }
@@ -275,9 +274,9 @@ export const UpdateUser = async (data) => {
             'url': `/adminapi/user-update`,
             data: {encode : encodedata(data)}
         });
-        console.log('respDatarespData-----', respData)
+      
         const response = decodedata(respData.data)
-        console.log('decodedata(respData.data)-----',response)
+        
         return {
             status: "success",
             loading: false,
@@ -354,19 +353,25 @@ export const kycList = async (data) => {
         let respData = await axios({
             'method': 'post',
             'url': `/adminapi/kycList`,
-            data
+            data:  {encode: encodedata(data)}
         });
+        const response = decodedata(respData.data)
+      
         return {
             status: "success",
             loading: false,
-            result: respData.data.result,
-            message: respData.data.message
+            result: response.result,
+            message: response.message
         }
     } catch (err) {
+        handleResp(err, 'err')
+        const response = decodedata(err.response.data)
+      
+
         return {
             status: "failed",
             loading: false,
-            error: err.response.data.errors
+            error: response.message
         }
     }
 }

@@ -8,7 +8,7 @@ import { addSpotPair } from '../../actions/tradePairAction'
 //import lib
 import { toastAlert } from '../../lib/toastAlert';
 import isEmpty from '../../lib/isEmpty'
-import { Addoffertaghook, Editoffertaghook, Editpaymenttypehooks } from '../../actions/P2PCreateaction';
+import { Addoffertaghook, Editoffertaghook, Editpaymenttypehooks, Getpaymenttypehook } from '../../actions/P2PCreateaction';
 
 
 const options = [{ 'value': "binance", 'label': "binance" }, { 'value': "off", 'label': "Off" }];
@@ -29,9 +29,9 @@ const initialFormValue = {
     // "markPrice": "",
     // "botstatus": "off",
     "status": "", //active ,Inactive
-    "name" : "",
+    "name": "",
     // "description" : "",
-    "id" : ""
+    "id": ""
 }
 
 class EditpaymenttypeModal extends React.Component {
@@ -57,6 +57,7 @@ class EditpaymenttypeModal extends React.Component {
     handleClose = () => {
         const { onHide } = this.props;
         onHide();
+        this.getpaymenttypes()
         this.setState({ 'formValue': initialFormValue, errors: {} });
 
     }
@@ -66,14 +67,17 @@ class EditpaymenttypeModal extends React.Component {
         try {
             const { formValue } = this.state;
             const { fetchData } = this.props;
-            
+
             let reqData = formValue;
             this.setState({ 'loader': true })
             // let { status, loading, result, error, message,pairName } = await Addoffertaghook(reqData);
             var result = await Editpaymenttypehooks(reqData);
             // this.setState({ 'loader': true })
+            // this.getpaymenttypes()
             if (result?.data?.type === 'success') {
+                
                 fetchData();
+                window.location.reload()
                 toastAlert('success', result?.data?.message, 'addTemplate');
                 this.handleClose()
             } else {
@@ -99,21 +103,38 @@ class EditpaymenttypeModal extends React.Component {
     //     data.description = this.props?.record?.description;
     //     data.status = this.props?.record?.status
     // }
-    componentWillReceiveProps(nextProps){
+    componentWillReceiveProps(nextProps) {
         var data = this.state.formValue;
         data.name = nextProps?.record?.Name;
         // data.description = nextProps?.record?.Description;
         data.status = nextProps?.record?.status;
         data.id = nextProps?.record?._id;
-        this.setState({formValue : data});
+        this.setState({ formValue: data });
     }
 
 
 
+    async getpaymenttypes() {
+        try {
+            var payload = {
+                page: 1,
+                limit: 10,
+            }
+            var result = await Getpaymenttypehook(payload);
+            console.log('result?.data------', result?.data)
+            if (result?.data?.type == "success") {
+                // var value = this?.state?.count + this?.state?.limit
+                this.setState({ "count": result?.data?.count, 'records': result?.data?.data })
+            }
+        }
+        catch (e) {
+        }
+    }
+
     render() {
         const { errors, loader } = this.state;
         const { markupPercentage, markPrice, maker_rebate, taker_fees, minPricePercentage, maxPricePercentage, maxQuantity, minQuantity, firstCurrencyId,
-            firstFloatDigit, secondCurrencyId, secondFloatDigit, botstatus , status , name , description } = this.state.formValue
+            firstFloatDigit, secondCurrencyId, secondFloatDigit, botstatus, status, name, description } = this.state.formValue
 
         const { isShow, currencyOptions } = this.props;
 
@@ -406,8 +427,8 @@ class EditpaymenttypeModal extends React.Component {
                                         onChange={this.handleChange}
                                     >
                                         {/* <option value={''}>{"Status"}</option> */}
-                                        <option value = {"Active"}>Active</option>
-                                        <option value = {"Inactive"}>Inactive</option>
+                                        <option value={"Active"}>Active</option>
+                                        <option value={"Inactive"}>Inactive</option>
                                         {/* {
                                             options && options.length > 0 && options.map((item, key) => {
                                                 return (

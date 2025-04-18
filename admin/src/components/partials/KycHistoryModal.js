@@ -22,7 +22,8 @@ class KycModal extends React.Component {
                 align: "left",
                 sortable: true,
                 cell: (kycDetails) => {
-                    return kycDetails && kycDetails.idProof && kycDetails.idProof.status
+                    const status = kycDetails?.idProof?.status;
+                    return status ? status.charAt(0).toUpperCase() + status.slice(1) : '';
                 }
             },
             {
@@ -32,10 +33,11 @@ class KycModal extends React.Component {
                 align: "left",
                 sortable: true,
                 cell: (kycDetails) => {
-                    return kycDetails && kycDetails.addressProof && kycDetails.addressProof.status
-
+                    const status = kycDetails?.addressProof?.status;
+                    return status ? status.charAt(0).toUpperCase() + status.slice(1) : '';
                 }
-            },
+            }
+            
             // {
             //     key: "amount",
             //     text: "Amount",
