@@ -44,5 +44,4 @@ else {
     };
 }
 
-
 export default key;
