@@ -19,6 +19,7 @@ import { jsPDF } from "jspdf";
 import 'jspdf-autotable';
 import { CSVLink } from "react-csv";
 import { compose } from "redux";
+import { toastAlert } from "../../lib/toastAlert";
 
 
 class Withdraw extends Component {
@@ -87,8 +88,20 @@ class Withdraw extends Component {
                 text: "Status",
                 className: "status",
                 align: "left",
-                sortable: true
-            },
+                sortable: true,
+                cell: record => {
+                    switch (record.status) {
+                        case 'rejected':
+                            return 'Rejected';
+                        case 'completed':
+                            return 'Completed';
+                        case 'time_expired':
+                            return 'Time Expire';
+                        default:
+                            return record.status;
+                    }
+                }
+            },            
             {
                 key: "action",
                 text: "Action",
@@ -184,7 +197,8 @@ class Withdraw extends Component {
             const { status, loading, result } = await getWithdrawList(reqData);
             this.setState({ "loader": loading })
             if (status == 'success') {
-                this.setState({ "count": result.count, 'records': result.data })
+                this.setState({ "count": result.count, 'records': result.data });
+               
             }
         } catch (err) { }
     }
@@ -223,7 +237,16 @@ class Withdraw extends Component {
             limit,
             export: 'csv'
         }
+        
         const { status, loading, result } = await getWithdrawList(reqData);
+      
+        if (status == 'success') {
+            
+            toastAlert('success', 'Download Completed')
+        }else{
+            toastAlert('error', 'Download Failed')
+
+        }
     }
 
     async DownloadeXls() {
@@ -234,6 +257,13 @@ class Withdraw extends Component {
             export: 'xls'
         }
         const { status, loading, result } = await getWithdrawList(reqData);
+        if (status == 'success') {
+            
+            toastAlert('success', 'Download Completed')
+        }else{
+            toastAlert('error', 'Download Failed')
+
+        }
     }
 
     async exportPDF() {
@@ -297,6 +327,10 @@ class Withdraw extends Component {
             doc.text(title, marginLeft, 40);
             doc.autoTable(content);
             doc.save("Withdraw.pdf");
+            toastAlert('success', 'Download Completed')
+        }else{
+            toastAlert('error', 'Download Failed')
+
         }
     }
 

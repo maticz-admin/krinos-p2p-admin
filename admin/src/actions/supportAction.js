@@ -6,7 +6,7 @@ export const categoryAdd = async (data) => {
         let respData = await axios({
             'method': 'post',
             'url': `/adminapi/supportCategory`,
-            'data': {encode: encodedata(data)}
+            'data': { encode: encodedata(data) }
         });
         const response = decodedata(respData.data)
         return {
@@ -31,7 +31,7 @@ export const categoryList = async (data) => {
         let respData = await axios({
             'method': 'get',
             'url': `/adminapi/supportCategory`,
-            'params': {encode: encodedata(data)}
+            'params': { encode: encodedata(data) }
         });
         const response = decodedata(respData.data)
         return {
@@ -56,7 +56,7 @@ export const categoryUpdate = async (data) => {
         let respData = await axios({
             'method': 'put',
             'url': `/adminapi/supportCategory`,
-            'data': {encode: encodedata(data)}
+            'data': { encode: encodedata(data) }
         });
         const response = decodedata(respData.data)
         return {
@@ -79,11 +79,11 @@ export const categoryUpdate = async (data) => {
 
 export const TicketList = async (params) => {
     try {
-        
+
         let respData = await axios({
             'method': 'get',
             'url': `/adminapi/ticketList`,
-            params: {encode: encodedata(params)}
+            params: { encode: encodedata(params) }
         });
 
         if (params.export == 'csv') {
@@ -119,8 +119,8 @@ export const TicketList = async (params) => {
             message: response.message
         }
     }
-    
-    
+
+
 }
 export const getMessage = async (data) => {
     try {
@@ -129,26 +129,31 @@ export const getMessage = async (data) => {
             'url': `/adminapi/ticketMessage`,
             'params': data
         });
-
+    
         return {
+            success: true,
             status: "success",
             loading: false,
             result: respData.data.result
         }
     } catch (err) {
+      
         return {
+            success: false,
             status: "failed",
             loading: false,
+            message: err.response.data
         }
     }
 }
 
 export const replyMsg = async (data) => {
     try {
+        console.log('datadata------', data)
         let respData = await axios({
             'method': 'put',
             'url': `/adminapi/ticketMessage`,
-            data: {encode: encodedata(data)}
+            data: { encode: encodedata(data) }
         });
         const response = decodedata(respData.data);
         return {

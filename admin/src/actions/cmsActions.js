@@ -22,6 +22,7 @@ export const getCmsList = async () => {
 
 export const updateCms = async (data) => {
     try {
+      
     const options = {
         headers: {"content-type": "application/json"}
     }

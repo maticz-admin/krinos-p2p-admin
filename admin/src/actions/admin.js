@@ -201,13 +201,23 @@ export const changePassword = async (data) => {
             result: response.result
         }
     } catch (err) {
-        handleResp(err, 'err')
-        const response = decodedata(err.response.data)
-        return {
-            status: 'failed',
-            loading: false,
-            message: response.message,
-            error: response.errors
+        // handleResp(err, 'err')
+        if (err.response.data.errors) {
+
+            return {
+                status: 'failed',
+                loading: false,
+                error: err.response.data
+            }
+        } else {
+            const response = decodedata(err.response.data);
+
+            return {
+                status: 'failed',
+                loading: false,
+                error: response
+            }
+
         }
     }
 }

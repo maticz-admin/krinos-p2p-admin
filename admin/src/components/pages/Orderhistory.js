@@ -133,7 +133,7 @@ class tradehistory extends Component {
                 sortable: true,
                 width: 500,
                 cell: record => {
-                    return momentFormat(record.createdAt, 'YYYY-MM-DD HH:mm')
+                    return momentFormat(record.createdAt, 'YYYY-MM-DD hh:mm A');
                 }
             },
             {
@@ -151,7 +151,7 @@ class tradehistory extends Component {
                 align: "left",
                 // sortable: true,
                 width: 200,
-                cell : record => record?.userdata?.firstName +" "+ record?.userdata?.lastName
+                cell: record => record?.userdata?.firstName + " " + record?.userdata?.lastName
             },
             {
                 // key: "orderid",
@@ -160,7 +160,7 @@ class tradehistory extends Component {
                 align: "left",
                 // sortable: true,
                 width: 200,
-                cell : record => record?.userdata?.email
+                cell: record => record?.userdata?.email
             },
             {
                 key: "orderid",
@@ -239,7 +239,7 @@ class tradehistory extends Component {
                 align: "left",
                 sortable: true,
                 width: 200,
-                cell:(record => {
+                cell: (record => {
                     return record?.offermargin ? record?.offermargin : "-"
                 })
             },
@@ -269,7 +269,7 @@ class tradehistory extends Component {
                     previous: "<",
                     next: ">",
                     last: ">>"
-                  }
+                }
             },
             show_length_menu: false,
             show_filter: true,
@@ -320,7 +320,7 @@ class tradehistory extends Component {
             // }
             //offer history
             var result = await Getofferhistoryhook(reqData);
-            if(result?.data?.type == "success"){
+            if (result?.data?.type == "success") {
                 this.setState({ "count": result?.data?.count, 'records': result.data?.data })
             }
         } catch (err) { }
@@ -336,7 +336,7 @@ class tradehistory extends Component {
             export: 'pdf'
         }
         // const { status, loading, result } = await Getofferhistoryhook(reqData);
-        const result  = await Getofferhistoryhook(reqData);
+        const result = await Getofferhistoryhook(reqData);
         if (result?.data?.success || result?.data?.success == "true") {
             const unit = "pt";
             const size = "A4"; // Use A1, A2, A3 or A4
@@ -349,7 +349,7 @@ class tradehistory extends Component {
 
             const title = "Offerhistory";
             const headers = [
-                ["Date", "Creater Id", "Order Id", "Currency" , "Type" , "Prefered Currency" , "Price Type" , "Time Limit" , "Min Buy" , "Max Buy" , "Offer Margin"]
+                ["Date", "Creater Id", "Order Id", "Currency", "Type", "Prefered Currency", "Price Type", "Time Limit", "Min Buy", "Max Buy", "Offer Margin"]
             ];
 
             const data =
@@ -365,7 +365,7 @@ class tradehistory extends Component {
                     elt.offertimelimit,
                     elt.min,
                     elt.max,
-                    elt.offermargin?elt.offermargin: "-",
+                    elt.offermargin ? elt.offermargin : "-",
                 ]);
 
             let content = {

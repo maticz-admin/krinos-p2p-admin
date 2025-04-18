@@ -44,6 +44,7 @@ export const getDepositList = async (data) => {
 
 export const getWithdrawList = async (data) => {
     try {
+        console.log('datadatadata-----', data)
         const respData = await axios({
             'url': `/adminapi/withdrawList`,
             'method': 'get',
@@ -67,20 +68,23 @@ export const getWithdrawList = async (data) => {
             document.body.appendChild(link);
             link.click();
         }
-        const response = decodedata(respData.data)
+        const response = decodedata(respData.data);
+       
         return {
             status: "success",
             loading: false,
             result: response.result
         }
     } catch (err) {
-        handleResp(err, 'err')
-        const response = decodedata(err.response.data)
+        
+        // handleResp(err, 'err')
+        // const response = decodedata(err.response.data)
+
         return {
             status: 'failed',
             loading: false,
-            error: response.errors,
-            message: response.message
+            // error: response.errors,
+            // message: response.message
         }
     }
 }
