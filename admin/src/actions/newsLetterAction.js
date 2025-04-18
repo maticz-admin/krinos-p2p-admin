@@ -39,13 +39,23 @@ export const sendNews = async (data) => {
             message: response.message
         }
     } catch (err) {
-        handleResp(err, 'err')
-        const response = decodedata(err.response.data)
-        return {
-            status: 'failed',
-            loading: false,
-            message: response.message,
-            errors: response.errors
+       
+        if (err.response.data.errors) {
+            return {
+                status: 'failed',
+                loading: false,
+                errors: err.response.data.errors
+            }
+        }else{
+
+            handleResp(err, 'err')
+            const response = decodedata(err.response.data)
+            return {
+                status: 'failed',
+                loading: false,
+                message: response.message,
+                errors: response.errors
+            }
         }
     }
 }

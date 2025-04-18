@@ -92,7 +92,7 @@ class FaqPage extends Component {
                     previous: "<",
                     next: ">",
                     last: ">>"
-                  }
+                }
             },
             show_length_menu: false,
             show_filter: true,
@@ -110,7 +110,9 @@ class FaqPage extends Component {
             limit: 10,
             count: 0,
             loader: false,
-            categoryOption: []
+            categoryOption: [],
+            
+
         };
 
         this.fetchFaq = this.fetchFaq.bind(this);
@@ -125,7 +127,8 @@ class FaqPage extends Component {
         const { page, limit } = this.state;
         let reqData = {
             page,
-            limit
+            limit,
+            search: ''
         }
         this.fetchFaq(reqData)
         this.fetchFaqCategoryDropDown()
@@ -172,23 +175,34 @@ class FaqPage extends Component {
     }
 
     refetch() {
-        const { page, limit } = this.state;
-        let reqData = {
+        const { page, limit, search } = this.state;
+        const reqData = {
             page,
-            limit
-        }
-        this.fetchFaq(reqData)
+            limit,
+            search
+        };
+        this.fetchFaq(reqData);
     }
+    
 
     handlePagination(index) {
-        let reqData = {
-            page: index.page_number,
-            limit: index.page_size,
-            search: index.filter_value
-        }
-        this.fetchFaq(reqData);
-        this.setState({ page: index.page_number, limit: index.page_size, search: index.filter_value })
+        const { page_number, page_size, filter_value } = index;
+    
+        const reqData = {
+            page: page_number,
+            limit: page_size,
+            search: filter_value,
+        };
+    
+        this.setState({
+            page: page_number,
+            limit: page_size,
+            search: filter_value,
+        }, () => {
+            this.fetchFaq(reqData);
+        });
     }
+    
 
     render() {
         const { addFormModal, editFormModal, editRecord, loader, count, categoryOption } = this.state;
@@ -198,24 +212,17 @@ class FaqPage extends Component {
                 <Navbar />
                 <div className="d-flex" id="wrapper">
                     <Sidebar />
-                    <FaqAddModal
-                        isShow={addFormModal}
-                        onHide={this.handleCloseAddForm}
-                        categoryOption={categoryOption}
-                        fetchData={this.refetch}
+                    <FaqAddModal isShow={addFormModal} onHide={this.handleCloseAddForm}
+                        categoryOption={categoryOption} fetchData={this.refetch}
                     />
-                    <FaqUpdateModal
-                        isShow={editFormModal}
-                        onHide={this.handleCloseEditForm}
-                        fetchData={this.refetch}
-                        categoryOption={categoryOption}
-                        record={editRecord}
+                    <FaqUpdateModal isShow={editFormModal} onHide={this.handleCloseEditForm}
+                        fetchData={this.refetch} categoryOption={categoryOption} record={editRecord}
                     />
                     <div id="page-content-wrapper">
                         <div className="container-fluid">
                             <button onClick={() => this.addRecord()}
-                                className="btn btn-outline-primary float-right mt-3 mr-2" ><FontAwesomeIcon icon={faPlus}  className="mr-1" /> Add FAQ</button>
-                                 <div className="clearfix" />
+                                className="btn btn-outline-primary float-right mt-3 mr-2" ><FontAwesomeIcon icon={faPlus} className="mr-1" /> Add FAQ</button>
+                            <div className="clearfix" />
                             <h3 className="mt-2 text-secondary">FAQ List</h3>
                             <ReactDatatable className="table table-bordered table-striped"
                                 config={this.config}

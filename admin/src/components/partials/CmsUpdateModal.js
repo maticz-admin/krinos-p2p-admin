@@ -76,6 +76,11 @@ class CmsUpdateModal extends React.Component {
         formData.append('identifier', identifier);
         formData.append('title', title);
         formData.append('content', content);
+        console.log('FormData contents:');
+        formData.forEach((value, key) => {
+            console.log(`${key}: ${value}`);
+        });
+
         // formData.append('image', image);
         // for (const key of Object.keys(image)) {
         //     formData.append('file', image[key])
@@ -104,7 +109,7 @@ class CmsUpdateModal extends React.Component {
         const { identifier, title, content } = this.state.formValue
         const { errors } = this.state;
         const { isShow } = this.props;
-
+       
         return (
             <div>
                 <Modal
@@ -144,8 +149,7 @@ class CmsUpdateModal extends React.Component {
                                 <div className="col-md-9">
                                     <input
                                         onChange={this.handleChange}
-                                        value={title}
-                                        error={errors.title}
+                                        value={title === undefined || title === 'undefined' ? "Kindly set your title" : title}
                                         name="title"
                                         type="text"
                                         className={classnames("form-control", {
@@ -154,13 +158,14 @@ class CmsUpdateModal extends React.Component {
                                     />
                                     <span className="text-danger">{errors.title}</span>
                                 </div>
+
                             </div>
                             <div className="row mt-2">
                                 <div className="col-md-3">
                                     <label htmlFor="content">Content</label>
                                 </div>
                                 <div className="col-md-9">
-                                <span className="text-danger">{errors.content}</span>
+                                    <span className="text-danger">{errors.content}</span>
                                     <CKEditor
                                         config={{
                                             extraAllowedContent: 'div(*)',

@@ -192,11 +192,12 @@ class CurrencyAddModal extends React.Component {
     formData.append("depositStatus",depositStatus)
     formData.append("withdrawStatus",withdrawStatus)
     formData.append("commisionfee" , commisionfee);
-    formData.append("coinpaymentsymbol"  , coinpaymentsymbol)
+    formData.append("coinpaymentsymbol", coinpaymentsymbol)
     formData.append("bitgosymbol" , bitgosymbol)
     this.setState({ loader: true })
     try {
       const { status, loading, message, error } = await addCurrency(formData);
+      
       this.setState({ loader: loading })
       if (status == 'success') {
         this.handleClose()
@@ -204,6 +205,7 @@ class CurrencyAddModal extends React.Component {
         toastAlert('success', message, 'currencyAddModal')
       } else if (status == 'failed') {
         if (error) {
+          toastAlert('error', error.errors)
           this.setState({ errors: error })
         } else {
           toastAlert('error', message, 'currencyAddModal')
@@ -343,6 +345,28 @@ class CurrencyAddModal extends React.Component {
                 </div>
               </div>
 
+
+              <div className="row mt-2">
+                <div className="col-md-3">
+                  <label>Coin Payment Symbol</label>
+                </div>
+                <div className="col-md-9">
+                  <input
+                    name="coinpaymentsymbol"
+                    type="text"
+                    value={coinpaymentsymbol}
+                    onChange={this.handleChange}
+                    error={errors.coinpaymentsymbol}
+                    className={classnames("form-control", {
+                      invalid: errors.coinpaymentsymbol,
+                    })}
+                  />
+                  <span className="text-danger">
+                    {errors.coinpaymentsymbol}
+                  </span>
+                </div>
+
+                </div>
               <div className="row mt-2">
                 <div className="col-md-3">
                   <label>Bitgo Symbol</label>
@@ -729,7 +753,7 @@ class CurrencyAddModal extends React.Component {
                   >
                     {/* <option value={'local'}>Local</option> */}
                     {/* <option value={'binance'}>Binance</option> */}
-                    {/* <option value={'coin_payment'}>Coin Payment</option> */}
+                    <option value={'coin_payment'}>Coin Payment</option>
                     <option value={'bitgo'}>Bitgo</option>
 
                   </Form.Control>

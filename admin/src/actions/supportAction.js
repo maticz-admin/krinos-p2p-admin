@@ -104,7 +104,6 @@ export const TicketList = async (params) => {
             link.click();
         }
         const response = decodedata(respData.data);
-        console.log('response-------', response)
         return {
             status: "success",
             loading: false,
