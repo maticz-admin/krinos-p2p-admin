@@ -46,8 +46,8 @@ h6,
   --aqua: #0ad2b9 !important;
   --dark-bg: #0a090d;
   --secondary-bg: #19181c;
-  --black:#000;
-  --white:#fff;
+  --black: #000;
+  --white: #fff;
   --dark-secondary-btnBg: #121116;
   --dark-clr: #a3a3b7;
   --dark-sub-head: #a3a3b7;
@@ -479,7 +479,6 @@ input::placeholder {
   /* color: #f8f9fa !important; */
   color: var(--white) !important;
 }
-
 
 label {
   color: var(--white) !important;
@@ -1173,7 +1172,15 @@ label {
 }
 .flexing_disable_btn {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   flex-wrap: nowrap;
+}
+
+.table thead th {
+  text-align: center !important;
+}
+
+.table tbody td {
+  text-align: center !important;
 }

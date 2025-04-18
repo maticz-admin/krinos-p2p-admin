@@ -14,6 +14,7 @@ import { toastAlert } from '../../lib/toastAlert'
 import isEmpty from '../../lib/isEmpty';
 import config from '../../config';
 import { momentFormat } from '../../lib/dateTimeHelper';
+import { useNavigate } from 'react-router-dom';
 const initialFormValue = {
     "message": "",
 }
@@ -86,6 +87,10 @@ class SupportReply extends React.Component {
         }
     };
 
+    handleBack = () => {
+        window.history.back(); 
+      };
+
     render() {
         const { errors, records, msgConversation, loader } = this.state;
         // console.log('records-------', records)
@@ -98,7 +103,10 @@ class SupportReply extends React.Component {
                     <Sidebar />
                     <div id="page-content-wrapper">
                         <div className="container-fluid">
-                            <h3 className="mt-2 text-secondary mb-4">Support Ticket</h3>
+                            <div className='d-flex flex-wrap align-items-center mt-2 mb-4 justify-content-between'>
+                            <h3 className="text-secondary">Support Ticket</h3>
+                            <button className='btn btn-primary' onClick={this.handleBack}>Back</button>
+                            </div>
 
                             {/* <div className="row rounded-lg overflow-hidden shadow"> */}
                             {/* Chat Box*/}
