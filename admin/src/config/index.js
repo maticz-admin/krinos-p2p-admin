@@ -26,7 +26,7 @@ else {
     key = {
         secretOrKey: "FxUum76z",
         Recaptchakey: "6LeHezUfAAAAAE_uuY_HFN5HoEVsQv8bpyC3xTat", //local
-        API_URL: `${API_URL}:2053`,
+        API_URL: `${API_URL}:2054`,
         TRADE_URL: 'http://54.211.230.83:8081/api/trade',
         getGeoInfo: "https://ipapi.co/json/",
         socialMedia: {
@@ -43,6 +43,5 @@ else {
         },
     };
 }
-
 
 export default key;
