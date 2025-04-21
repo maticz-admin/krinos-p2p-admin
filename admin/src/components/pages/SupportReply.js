@@ -102,6 +102,10 @@ const SupportReply = () => {
 
     const { message } = formValue;
 
+   const handleBack = () => {
+        window.history.back(); 
+      };
+
     return (
         <div>
             <Navbar />
@@ -109,7 +113,12 @@ const SupportReply = () => {
                 <Sidebar />
                 <div id="page-content-wrapper">
                     <div className="container-fluid">
-                        <h3 className="mt-2 text-secondary mb-4">Support Ticket</h3>
+                    <div className='d-flex flex-wrap align-items-center mt-2 mb-4 justify-content-between'>
+                            <h3 className="text-secondary">Support Ticket</h3>
+                            <button className='btn btn-primary' 
+                            onClick={handleBack}
+                            >Back</button>
+                            </div>
 
                         {/* Chat Box */}
                         <div className="px-4 py-5 chat-box bg-white">
