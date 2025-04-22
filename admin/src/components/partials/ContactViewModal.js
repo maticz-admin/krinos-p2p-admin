@@ -41,6 +41,7 @@ class ContactUpdateModal extends React.Component {
             id: record._id,
         }
         let { status, errors, message } = await AdminMsg(Data)
+        console.log('errors------', errors)
         if (status === true) {
             toastAlert('success', message)
             this.setState({ show: 'true' })
@@ -69,7 +70,7 @@ class ContactUpdateModal extends React.Component {
     }
 
     render() {
-        let { rlyMsg, validErr, show } = this.state
+        let { rlyMsg, validErr, show, errors } = this.state
         let { record } = this.props
         return (
             <div>
@@ -128,6 +129,7 @@ class ContactUpdateModal extends React.Component {
                                             <div className="col-md-9" style={{ 'overflow-wrap': 'break-word' }}>
                                                 {record.adminMsg}
                                             </div>
+                                           
                                     </div>
 
                                 </form>

@@ -360,6 +360,7 @@ class Users extends Component {
         try {
             this.setState({ 'loader': true })
             const { status, loading, result } = await getUser(reqData);
+           
             this.setState({ 'loader': loading })
             if (status == 'success') {
                 this.setState({ "count": result.count, 'records': result.data })

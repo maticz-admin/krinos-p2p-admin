@@ -18,6 +18,7 @@ import { getCurrency } from '../../actions/currency'
 import { Getoffertaghook, Getpaymenttypehook } from "../../actions/P2PCreateaction";
 import Addpaymenttype from "../partials/AddPaymenttypemodal";
 import EditpaymenttypeModal from "../partials/Editpaymenttype";
+import { toastAlert } from "../../lib/toastAlert";
 
 
 class Paymenttypes extends Component {
@@ -130,6 +131,7 @@ class Paymenttypes extends Component {
 
     async getpaymenttypes(data) {
         try {
+            console.log('datadatadata------', data)
             var result = await Getpaymenttypehook(data);
             if (result?.data?.type == "success") {
                 // var value = this?.state?.count + this?.state?.limit
@@ -167,6 +169,8 @@ class Paymenttypes extends Component {
             editFormModal: true,
             editRecord: record
         })
+
+
     }
     addRecord() {
         this.setState({ addFormModal: true })
@@ -177,7 +181,12 @@ class Paymenttypes extends Component {
     }
 
     handleCloseEditForm() {
-        this.setState({ editFormModal: false })
+        this.setState({ editFormModal: false });
+        // this.setState({ editFormModal: false }, () => {
+        //     toastAlert('success', 'Update success')
+        //     this.getpaymenttypes({ page: this.state.page, limit: this.state.limit });
+        // });
+
     }
 
     handlePagination(index) {
@@ -195,9 +204,10 @@ class Paymenttypes extends Component {
     }
 
 
-
     render() {
         const { addFormModal, editRecord, editFormModal, currencyOptions } = this.state;
+
+
 
         return (
             <div>
@@ -217,6 +227,7 @@ class Paymenttypes extends Component {
                         fetchData={() => this.getpaymenttypes()}
                         record={editRecord}
                     />
+
                     <div id="page-content-wrapper">
                         <div className="container-fluid">
                             <button onClick={() => this.addRecord()} className="btn btn-outline-primary float-right mt-3 mr-2" data-toggle="modal" data-target="#add-spot-modal"><FontAwesomeIcon icon={faPlus} className="mr-1" /> Add </button>

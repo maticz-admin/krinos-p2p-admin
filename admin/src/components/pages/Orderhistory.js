@@ -133,7 +133,16 @@ class tradehistory extends Component {
                 sortable: true,
                 width: 500,
                 cell: record => {
-                    return momentFormat(record.createdAt, 'YYYY-MM-DD hh:mm A');
+                    return <>
+                        {new Intl.DateTimeFormat('en-US', {
+                            year: 'numeric',
+                            month: 'short',
+                            day: '2-digit',
+                            hour: '2-digit',
+                            minute: '2-digit',
+                            hour12: true
+                        }).format(new Date(record.createdAt))}
+                    </>
                 }
             },
             {

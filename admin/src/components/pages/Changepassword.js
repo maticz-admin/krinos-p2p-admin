@@ -79,16 +79,20 @@ class Changepassword extends Component {
 
     if (status == 'success') {
       toastAlert('success', message);
-
-      this.setState({
-        formValue: {
-          otp: '',
-          newPassword: '',
-          oldPassword: '',
-          confirmPassword: ''
-        },
-        validErr: {}
-      });
+      setTimeout(() => {
+        localStorage.removeItem("admin_token");
+        window.location.reload();
+    
+        this.setState({
+          formValue: {
+            otp: '',
+            newPassword: '',
+            oldPassword: '',
+            confirmPassword: ''
+          },
+          validErr: {}
+        });
+      }, 2000);
     }
 
     if (error) {

@@ -16,6 +16,7 @@ import { CSVLink } from "react-csv";
 // import Link from "react-csv/components/Link";
 import { Link, withRouter } from 'react-router-dom';
 import SupportReply from "./SupportReply";
+import { getProfile } from "../../actions/admin";
 
 class Support extends Component {
 
@@ -57,7 +58,22 @@ class Support extends Component {
                 className: "status",
                 align: "left",
                 sortable: false,
+
             },
+            // {
+            //     key: "AssignedAdmin",
+            //     text: "Assigned Admin",
+            //     className: "status",
+            //     align: "left",
+            //     sortable: false,
+            //     cell: (record) => {
+            //       const { admins = [] } = this.state;
+            //       console.log('adminsadminsadmins------', record)
+            //     //   const admin = admins.find(a => a._id === record.adminId);
+            //     //   return admin ? admin.name : "N/A";
+            //     }
+            //   },
+
             {
                 key: "createdAt",
                 text: "Date",
@@ -66,7 +82,15 @@ class Support extends Component {
                 sortable: false,
                 filter: 'between',
                 cell: (record) => {
-                    return momentFormat(record.createdAt, 'YYYY-MM-DD HH:mm')
+                    return <> {new Intl.DateTimeFormat('en-US', {
+                        year: 'numeric',
+                        month: 'short',
+                        day: '2-digit',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        hour12: true
+                    }).format(new Date(record.createdAt))}
+                    </>
                 },
             },
             {
@@ -77,8 +101,7 @@ class Support extends Component {
                 align: "left",
                 sortable: false,
                 cell: record => {
-                    console.log('record?.roomid-------', record)
-
+                  
                     if (record.status == "closed") {
                         return "-"
                     }
@@ -115,7 +138,7 @@ class Support extends Component {
             no_data_text: 'No Enquires found!',
             language: {
                 length_menu: "Show _MENU_ result per page",
-                filter: "Filter in records...",
+                filter: "Filter in ticket Id",
                 info: "Showing _START_ to _END_ of _TOTAL_ records",
                 pagination: {
                     first: "<<",
@@ -136,6 +159,7 @@ class Support extends Component {
             limit: 10,
             count: 0,
             loader: false,
+            admins:''
         };
 
         this.getData = this.getData.bind(this);
@@ -145,6 +169,19 @@ class Support extends Component {
         this.DownoladeXLS = this.DownoladeXLS.bind(this)
 
     }
+
+    // componentWillUnmount() {
+    //     this.getAdminDetails();
+    //   }
+      
+    //   getAdminDetails = async () => {
+    //     let { status, message, result } = await getProfile();
+    //     console.log('result-------', result)
+    //     if (status) {
+    //       this.setState({ admins: result }); // Store admins here
+    //     }
+    //   }
+      
 
     componentDidMount() {
         const { page, limit, search } = this.state;
@@ -300,7 +337,7 @@ class Support extends Component {
                             ) : (
                                 ""
                             )}
-                           
+
 
                             <ReactDatatable className="table table-bordered table-striped  support_table"
                                 config={this.config}
