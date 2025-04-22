@@ -181,13 +181,12 @@ class Paymenttypes extends Component {
     }
 
     handleCloseEditForm() {
-        this.setState({ editFormModal: false });
-        // this.setState({ editFormModal: false }, () => {
-        //     toastAlert('success', 'Update success')
-        //     this.getpaymenttypes({ page: this.state.page, limit: this.state.limit });
-        // });
-
+        this.setState({ editFormModal: false }, () => {
+            toastAlert('success', 'Payment type updated successfully!');
+            this.getpaymenttypes({ page: this.state.page, limit: this.state.limit });
+        });
     }
+    
 
     handlePagination(index) {
         var limit = index.page_number * 10;

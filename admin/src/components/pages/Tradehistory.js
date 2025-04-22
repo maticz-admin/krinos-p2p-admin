@@ -18,6 +18,7 @@ import { jsPDF } from "jspdf";
 import 'jspdf-autotable';
 import { CSVLink } from "react-csv";
 import { Gettradehistoryhook } from "../../actions/P2PCreateaction";
+import { toastAlert } from "../../lib/toastAlert";
 class tradehistory extends Component {
     constructor(props) {
         super(props);
@@ -276,6 +277,7 @@ class tradehistory extends Component {
             //     this.setState({ "count": result.count, 'records': result.data, 'files': result.exportData })
             // }
             if(result?.data?.type == "success"){
+               
                 this.setState({ "count": result?.data?.count, 'records': result?.data?.data})
             }
             this.setState({ 'loader': false })
@@ -289,6 +291,7 @@ class tradehistory extends Component {
             // const { status, loading, result } = await spotTradeHistory(reqData);
             this.setState({ 'loader': false })
             if (result?.data?.type == 'success') {
+               
                 this.setState({ 'files': result.exportData })
             }
         } catch (err) { }
@@ -301,7 +304,8 @@ class tradehistory extends Component {
         }
 
         // this.exportData(reqData)
-        const { status, loading, result } = await Gettradehistoryhook(reqData);
+        const { status, loading, result } = await spotTradeHistory(reqData);
+        toastAlert('success', 'Download Completed')
         // if (status == 'success') {
             // this.setState({ "count": result.count, 'records': result.data, 'files': result.exportData })
         // }
@@ -313,7 +317,8 @@ class tradehistory extends Component {
         }
 
         // this.exportData(reqData)
-        const { status, loading, result } = await Gettradehistoryhook(reqData);
+        const { status, loading, result } = await spotTradeHistory(reqData);
+        toastAlert('success', 'Download Completed')
         // if (status == 'success') {
             // this.setState({ "count": result.count, 'records': result.data, 'files': result.exportData })
         // }
@@ -385,6 +390,7 @@ class tradehistory extends Component {
                 doc.text(title, marginLeft, 40);
                 doc.autoTable(content);
                 doc.save("SpotTradeHistory.pdf");
+                toastAlert('success', 'Download Completed')
             }
         }
 

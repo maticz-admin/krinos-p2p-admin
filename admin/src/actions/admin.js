@@ -164,23 +164,25 @@ export const loginHisPagination = async (data) => {
         let respData = await axios({
             'method': 'get',
             'url': `/adminapi/login-history`,
-            'params': data
+            'params': {encode:encodedata(data)}
 
         });
-
+        const response = decodedata(respData.data)
 
         return {
             status: "success",
             loading: false,
-            message: respData.data.message,
-            result: respData.data.result
+            message: response.message,
+            result: response.result
         }
     } catch (err) {
+        handleResp('err', err)
+        const response = decodedata(err.response.data)
         return {
             status: 'failed',
             loading: false,
-            message: err.response.data.message,
-            error: err.response.data.errors
+            message: response.message,
+            error: response.errors
         }
     }
 }

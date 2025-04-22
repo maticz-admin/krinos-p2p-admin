@@ -1,5 +1,5 @@
 // import config
-import axios from '../config/axios';
+import axios, { handleResp } from '../config/axios';
 import { decodedata, encodedata } from '../config/secure';
 
 export const spotOrderHistory = async (data) => {
@@ -50,7 +50,7 @@ export const spotTradeHistory = async (data) => {
         let respData = await axios({
             'method': 'get',
             'url': `/adminapi/spotTradeHistory`,
-            'params': data
+            'params': { encode: encodedata(data) }
         });
 
         if (data.exports == 'csv') {
@@ -71,19 +71,31 @@ export const spotTradeHistory = async (data) => {
             link.click();
         }
 
-
-
+        const response = decodedata(respData.data)
+        console.log('responseresponse-------', response)
         return {
             status: "success",
             loading: false,
-            result: respData.data.result,
+            result: response.result,
         }
     } catch (err) {
-        return {
-            status: "failed",
-            loading: false,
-            error: err.response.data.errors
+        handleResp('err', err)
+        console.log('err.response-----', err.response)
+        if (err.response == undefined) {
+            return {
+                status: "failed",
+                loading: false,
+            }
+        }else{
+            
+            const response = decodedata(err.response.data)
+            return {
+                status: "failed",
+                loading: false,
+                error: response.errors
+            }
         }
+        
     }
 }
 
@@ -174,7 +186,7 @@ export const passBookHistory = async (data) => {
         let respData = await axios({
             'method': 'get',
             'url': `/adminapi/userPassBookHistory`,
-            'params': {encode: encodedata(data)}
+            'params': { encode: encodedata(data) }
         });
         const response = decodedata(respData.data)
         return {
@@ -184,9 +196,9 @@ export const passBookHistory = async (data) => {
             count: response.count
         }
     } catch (err) {
-
+        handleResp('err', err)
         const response = decodedata(err.response.data)
-      
+
         return {
             status: "failed",
             loading: false,

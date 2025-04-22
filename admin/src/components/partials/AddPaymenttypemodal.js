@@ -91,8 +91,7 @@ class Addpaymenttype  extends React.Component {
         catch (err) { }
     }
 
-    componentDidMount(){
-    }
+
 
 
 
@@ -116,7 +115,7 @@ class Addpaymenttype  extends React.Component {
                 >
                     <Modal.Header closeButton>
                         <h4 className="modal-title">Add Payment Types</h4>
-                    </Modal.Header>
+                    </Modal.Header> 
                     <Modal.Body>
 
                         <form noValidate id="add-spot">

@@ -15,19 +15,6 @@ const options = [{ 'value': "binance", 'label': "binance" }, { 'value': "off", '
 
 
 const initialFormValue = {
-    // "firstCurrencyId": " ",
-    // "firstFloatDigit": "",
-    // "secondCurrencyId": " ",
-    // "secondFloatDigit": "",
-    // "minPricePercentage": "",
-    // "maxPricePercentage": "",
-    // "minQuantity": "",
-    // "maxQuantity": "",
-    // "maker_rebate": "",
-    // "taker_fees": "",
-    // "markupPercentage": "",
-    // "markPrice": "",
-    // "botstatus": "off",
     "status": "", //active ,Inactive
     "name": "",
     // "description" : "",
@@ -76,9 +63,10 @@ class EditpaymenttypeModal extends React.Component {
             // this.getpaymenttypes()
             if (result?.data?.type === 'success') {
                 
-                fetchData();
-                // window.location.reload()
-                toastAlert('success', result?.data?.message, 'addTemplate');
+               const fetchingData = await fetchData();
+                // console.log('result----', fetchingData, result?.data)
+                // // window.location.reload()
+                // toastAlert('success', 'Payment type update success');
                 this.handleClose()
             } else {
                 // if(error.pairName == 'Currency pair is not exists in binance'){
@@ -96,13 +84,7 @@ class EditpaymenttypeModal extends React.Component {
         catch (err) { }
     }
 
-    // componentDidMount(){
-    //     console.log("domponent did mount" , this.props);
-    //     var data = this.state.formValue;
-    //     data.name = this.props?.record?.name;
-    //     data.description = this.props?.record?.description;
-    //     data.status = this.props?.record?.status
-    // }
+   
     componentWillReceiveProps(nextProps) {
         var data = this.state.formValue;
         data.name = nextProps?.record?.Name;

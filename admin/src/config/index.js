@@ -1,5 +1,5 @@
 let key = {};
-let env = 'demo' //production or local
+let env = 'local' //production or local or demo
 if (env == 'production') {
     const API_URL = 'https://api.tossvtoss.com/'
     key = {

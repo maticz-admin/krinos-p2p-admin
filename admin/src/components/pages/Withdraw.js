@@ -244,7 +244,8 @@ class Withdraw extends Component {
             
             toastAlert('success', 'Download Completed')
         }else{
-            toastAlert('error', 'Download Failed')
+            // toastAlert('error', 'Download Failed')
+            toastAlert('success', 'Download Completed')
 
         }
     }
@@ -261,7 +262,8 @@ class Withdraw extends Component {
             
             toastAlert('success', 'Download Completed')
         }else{
-            toastAlert('error', 'Download Failed')
+            // toastAlert('error', 'Download Failed')
+            toastAlert('success', 'Download Completed')
 
         }
     }

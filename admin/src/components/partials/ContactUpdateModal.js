@@ -62,12 +62,24 @@ class ContactUpdateModal extends React.Component {
             this.setState({ validErr: {} })
         }
     }
-   async handleClose(e) {
-        e.preventDefault()
-        // window.location.reload()
-        
-        $('#update-contact-modal').modal('hide')
+    async handleClose(e) {
+        e.preventDefault();
+        this.setState({
+            validErr: {},
+            rlyMsg: ''
+        });
+        $('#update-contact-modal').modal('hide');
     }
+
+    componentDidMount() {
+        $('#update-contact-modal').on('shown.bs.modal', () => {
+            this.setState({
+                validErr: {},
+                rlyMsg: ''
+            });
+        });
+    }
+    
 
     render() {
         let { rlyMsg, validErr, show } = this.state
