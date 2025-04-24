@@ -17,6 +17,7 @@ import { jsPDF } from "jspdf";
 import 'jspdf-autotable';
 import { CSVLink } from "react-csv";
 import { Getofferhistoryhook } from "../../actions/P2PCreateaction";
+import { toastAlert } from "../../lib/toastAlert";
 
 class tradehistory extends Component {
     constructor(props) {
@@ -133,7 +134,16 @@ class tradehistory extends Component {
                 sortable: true,
                 width: 500,
                 cell: record => {
-                    return momentFormat(record.createdAt, 'YYYY-MM-DD hh:mm A');
+                    return <>
+                        {new Intl.DateTimeFormat('en-US', {
+                            year: 'numeric',
+                            month: 'short',
+                            day: '2-digit',
+                            hour: '2-digit',
+                            minute: '2-digit',
+                            hour12: true
+                        }).format(new Date(record.createdAt))}
+                    </>
                 }
             },
             {
@@ -377,6 +387,13 @@ class tradehistory extends Component {
             doc.text(title, marginLeft, 40);
             doc.autoTable(content);
             doc.save("SpotOrderHistory.pdf");
+
+
+            toastAlert('success', 'Download Completed')
+
+        } else {
+            toastAlert('error', 'Download Failed')
+
         }
     }
 
@@ -388,7 +405,13 @@ class tradehistory extends Component {
             export: 'csv'
         }
         const { status, loading, result } = await Getofferhistoryhook(reqData);
+        // if (status == 'success') {
 
+            toastAlert('success', 'Download Completed')
+        // } else {
+        //     toastAlert('error', 'Download Failed')
+
+        // }
     }
     async DownloadeXLS() {
         const { page, limit } = this.state;
@@ -398,7 +421,13 @@ class tradehistory extends Component {
             export: 'xls'
         }
         const { status, loading, result } = await Getofferhistoryhook(reqData);
+        // if (status == 'success') {
 
+            toastAlert('success', 'Download Completed')
+        // } else {
+        //     toastAlert('error', 'Download Failed')
+
+        // }
     }
 
     render() {

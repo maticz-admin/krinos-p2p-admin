@@ -50,8 +50,8 @@ const SupportReply = () => {
             console.log('id-----', id)
             const { status, loading, result, success } = await getMessage(reqData);
             const profiles = await viewUserProfile({ id: result.userId });
-            console.log('success-------', profiles.profileImage)
-            setProfileImage(profiles.profileImage)
+            console.log('success-------', result)
+            setProfileImage(profiles.result.profileImage.split('/')[2])
             setLoader(loading);
             if (success) {
                 setRecords(result);
@@ -79,7 +79,7 @@ const SupportReply = () => {
             receiverId: records.userId,
             message: formValue.message,
         };
-
+        console.log('reqData------', reqData)
         try {
             const { status, loading, message, error, result } = await replyMsg(reqData);
             setLoader(loading);
@@ -122,22 +122,23 @@ const SupportReply = () => {
                                             className={`media w-50 ${isAdmin ? "ml-auto" : ""} mb-3`}
                                         >
 
-                                            {!isAdmin ? (
+                                            {/* {!isAdmin ? (
                                                 <img
-                                                    src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg"
+                                                    src="https://img.freepik.com/premium-vector/user-circle-with-blue-gradient-circle_78370-4727.jpg?semt=ais_hybrid&w=740"
                                                     alt="user"
                                                     width={50}
                                                     className="rounded-circle"
                                                 />
-                                            ) : (
-
+                                            ) : ( */}
+                                            {!isAdmin && (
                                                 <img
-                                                    src={`${config.API_URL}api/account/profile${profileImage}`}
+                                                    src={`${config.API_URL}/user_profile_img/${profileImage}`}
                                                     alt="user"
                                                     width={50}
                                                     className="rounded-circle"
                                                 />
                                             )}
+                                            {/* )} */}
                                             <div className={`media-body ${!isAdmin ? "ml-3" : ""}`}>
                                                 <div
                                                     className={`rounded py-2 px-3 mb-2 ${isAdmin ? "bg-light-dark" : "bg-light"
@@ -147,7 +148,17 @@ const SupportReply = () => {
                                                         {item.message}
                                                     </p>
                                                 </div>
-                                                <p className="small text-muted">{momentFormat(item.createdAt)}</p>
+                                                <p className="small text-muted">
+                                                    {new Intl.DateTimeFormat('en-US', {
+                                                        year: 'numeric',
+                                                        month: 'short',
+                                                        day: '2-digit',
+                                                        hour: '2-digit',
+                                                        minute: '2-digit',
+                                                        hour12: true
+                                                    }).format(new Date(item.createdAt))}
+                                                </p>
+
                                                 {!isEmpty(item.attachment) && (
                                                     <a
                                                         href={`${config.API_URL}/images/support/${item.attachment}`}

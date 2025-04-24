@@ -127,22 +127,23 @@ export const getMessage = async (data) => {
         let respData = await axios({
             'method': 'get',
             'url': `/adminapi/ticketMessage`,
-            'params': data
+            'params': {encode: encodedata(data)}
         });
-    
+        const response = decodedata(respData.data);
         return {
             success: true,
             status: "success",
             loading: false,
-            result: respData.data.result
+            result: response.result
         }
     } catch (err) {
-      
+        handleResp(err, 'err')
+        const response = decodedata(err.response.data)
         return {
             success: false,
             status: "failed",
             loading: false,
-            message: err.response.data
+            message: response
         }
     }
 }

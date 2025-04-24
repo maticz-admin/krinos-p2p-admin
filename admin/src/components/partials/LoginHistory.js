@@ -8,6 +8,7 @@ import { CSVLink } from "react-csv";
 
 import { momentFormat } from '../../lib/dateTimeHelper'
 import { loginHisPagination } from '../../actions/admin';
+import { toastAlert } from '../../lib/toastAlert';
 
 class LoginHistory extends React.Component {
   constructor(props) {
@@ -80,8 +81,17 @@ class LoginHistory extends React.Component {
         width: "10px",
         sortable: true,
         cell: records => {
-          return momentFormat(records.createdDate, 'YYYY-MM-DD HH:mm')
-        }
+          return <>
+              {new Intl.DateTimeFormat('en-US', {
+                  year: 'numeric',
+                  month: 'short',
+                  day: '2-digit',
+                  hour: '2-digit',
+                  minute: '2-digit',
+                  hour12: true
+              }).format(new Date(records.createdDate))}
+          </>
+      }
       },
       {
         key: "status",
@@ -185,6 +195,8 @@ class LoginHistory extends React.Component {
       // click the CSVLink component to trigger the CSV download
       this.csvLink.link.click();
     });
+    toastAlert('success', 'Download Completed')
+
   }
   download1 = async () => {
     let respData = {
@@ -195,6 +207,8 @@ class LoginHistory extends React.Component {
       // click the CSVLink component to trigger the CSV download
       this.xlsLink.link.click();
     });
+    toastAlert('success', 'Download Completed')
+
   }
 
   async exportPDF() {
@@ -251,6 +265,8 @@ class LoginHistory extends React.Component {
     doc.text(title, marginLeft, 40);
     doc.autoTable(content);
     doc.save("LoginHistory.pdf");
+    toastAlert('success', 'Download Completed')
+
   }
 
 

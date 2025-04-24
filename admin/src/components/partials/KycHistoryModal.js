@@ -17,26 +17,26 @@ class KycModal extends React.Component {
         this.columns = [
             {
                 key: "status",
-                text: "IdProofStatus",
+                text: "KYC Status",
                 className: "email",
                 align: "left",
                 sortable: true,
-                cell: (kycDetails) => {
-                    const status = kycDetails?.idProof?.status;
+                cell: (kycDetails) => { // idProof?
+                    const status = kycDetails?.status;
                     return status ? status.charAt(0).toUpperCase() + status.slice(1) : '';
                 }
             },
-            {
-                key: "status",
-                text: "AddressProofStatus",
-                className: "email",
-                align: "left",
-                sortable: true,
-                cell: (kycDetails) => {
-                    const status = kycDetails?.addressProof?.status;
-                    return status ? status.charAt(0).toUpperCase() + status.slice(1) : '';
-                }
-            }
+            // {
+            //     key: "status",
+            //     text: "AddressProofStatus",
+            //     className: "email",
+            //     align: "left",
+            //     sortable: true,
+            //     cell: (kycDetails) => {
+            //         const status = kycDetails?.addressProof?.status;
+            //         return status ? status.charAt(0).toUpperCase() + status.slice(1) : '';
+            //     }
+            // }
             
             // {
             //     key: "amount",
@@ -85,6 +85,7 @@ class KycModal extends React.Component {
                 id: record._id
             }
             let { status, result } = await kycList(respData)
+           
             if (status) {
                 this.setState({ kycDetails: result })
             }

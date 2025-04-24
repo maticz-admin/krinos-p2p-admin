@@ -17,6 +17,7 @@ import { paymentType } from '../../lib/displayStatus'
 import { jsPDF } from "jspdf";
 import 'jspdf-autotable';
 import { CSVLink } from "react-csv";
+import { toastAlert } from "../../lib/toastAlert";
 
 class Deposit extends Component {
     constructor(props) {
@@ -134,7 +135,7 @@ class Deposit extends Component {
                     previous: "<",
                     next: ">",
                     last: ">>"
-                  }
+                }
             },
             show_length_menu: false,
             show_filter: true,
@@ -168,7 +169,7 @@ class Deposit extends Component {
         let reqData = {
             page,
             limit,
-            export:'false'
+            export: 'false'
         }
 
         this.fetchDeposit(reqData);
@@ -220,6 +221,8 @@ class Deposit extends Component {
             export: 'csv'
         }
         const { status, loading, result } = await getDepositList(reqData);
+        toastAlert('success', 'Download Completed')
+
     }
 
     async DowloadeXls() {
@@ -230,6 +233,8 @@ class Deposit extends Component {
             export: 'xls'
         }
         const { status, loading, result } = await getDepositList(reqData);
+        toastAlert('success', 'Download Completed')
+
     }
 
 
@@ -293,6 +298,8 @@ class Deposit extends Component {
             doc.text(title, marginLeft, 40);
             doc.autoTable(content);
             doc.save("Deposit.pdf");
+            toastAlert('success', 'Download Completed')
+
         }
     }
 
@@ -332,7 +339,7 @@ class Deposit extends Component {
                                 //     filename={"Deposit.csv"}
                                 //     className="btn btnTrade1 py-4"
                                 // >
-                                    <button className='btn btn-info mr-2 mb-2' onClick={this.DowloadeCsv} style={{ width: '118px', height: '35px', fontSize: '13px' }}>Download(CSV)</button>
+                                <button className='btn btn-info mr-2 mb-2' onClick={this.DowloadeCsv} style={{ width: '118px', height: '35px', fontSize: '13px' }}>Download(CSV)</button>
                                 // </CSVLink>
                             ) : (
                                 ""

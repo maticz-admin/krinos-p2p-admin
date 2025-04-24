@@ -8,9 +8,8 @@ export const getDepositList = async (data) => {
         const respData = await axios({
             'url': `/adminapi/depositList`,
             'method': 'get',
-            'params': data
+            'params': {encode: encodedata(data)}
         })
-
         if (data.export == 'csv') {
             const url = window.URL.createObjectURL(new Blob([respData.data]));
             const link = document.createElement('a');
@@ -28,11 +27,12 @@ export const getDepositList = async (data) => {
             document.body.appendChild(link);
             link.click();
         }
+        const response = decodedata(respData.data);
 
         return {
             status: "success",
             loading: false,
-            result: respData.data.result
+            result: response.result
         }
     } catch (err) {
         return {
@@ -44,7 +44,7 @@ export const getDepositList = async (data) => {
 
 export const getWithdrawList = async (data) => {
     try {
-        console.log('datadatadata-----', data)
+       
         const respData = await axios({
             'url': `/adminapi/withdrawList`,
             'method': 'get',
