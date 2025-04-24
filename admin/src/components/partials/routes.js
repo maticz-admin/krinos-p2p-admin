@@ -69,6 +69,7 @@ import PassBookHistory from "../pages/PassBookHistory"
 import Offer from "../pages/Offer"
 import Paymenttypes from '../pages/Paymenttypes';
 
+
 //2fa
 import GoogleAuth from '../pages/SecurityTwoFA'
 
@@ -336,8 +337,8 @@ const route = [
         component: PassBookHistory,
         exact: true,
         sidemenu: true,
-    }
-    
+    },
+  
 ]
 
 export default route
