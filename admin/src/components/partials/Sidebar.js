@@ -163,7 +163,7 @@ const Sidebar = (props) => {
                                         <Link to="/tradehistory" className="list-group-item list-group-item-action">Spot Trade History</Link>
                                         <Link to="/priceCNVlist" className="list-group-item list-group-item-action">Price Conversion</Link>*/}
                                        
-
+                                       {/* <Link to="/language" className="list-group-item list-group-item-action">Language</Link>  */}
                                        
                                     </div>
                         </Scrollbars>
@@ -298,7 +298,7 @@ export default Sidebar;
 //                                             {/* <Link to="/launchpad" className="list-group-item list-group-item-action">Launchpad</Link>
 //                                             <Link to="/token-purchase" className="list-group-item list-group-item-action">Purchase Token History</Link>
 
-//                                             <Link to="/language" className="list-group-item list-group-item-action">Language</Link> */}
+                                            // <Link to="/language" className="list-group-item list-group-item-action">Language</Link> 
 
 //                                             {/* <Link to="/orderhistory" className="list-group-item list-group-item-action">'Spot Order History'</Link>
 //                                             <Link to="/tradehistory" className="list-group-item list-group-item-action">Spot Trade History</Link>
