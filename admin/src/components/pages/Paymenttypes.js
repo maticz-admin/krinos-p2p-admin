@@ -182,7 +182,7 @@ class Paymenttypes extends Component {
 
     handleCloseEditForm() {
         this.setState({ editFormModal: false }, () => {
-            toastAlert('success', 'Payment type updated successfully!');
+            // toastAlert('success', 'Payment type updated successfully!');
             this.getpaymenttypes({ page: this.state.page, limit: this.state.limit });
         });
     }
