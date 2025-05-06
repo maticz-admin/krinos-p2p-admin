@@ -648,7 +648,7 @@ th.sortable {
   min-height: 100vh;
   background: var(--secondary-bg);
   /* overflow-y: scroll; */
-  top: 63px;
+  top: 60px;
   width: 250px !important;
 }
 @media only screen and (min-width: 992px) {

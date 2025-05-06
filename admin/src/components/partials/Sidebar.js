@@ -62,7 +62,8 @@ const Sidebar = (props) => {
         <div className="border-right sidebar_whole">
           <div className="list-group list-group-flush">
             <Scrollbars
-              style={{ width: 250, height: "88.5vh" }}
+              // style={{ width: 250, height: "88.5vh" }}
+              style={{ width: 250, height: "calc(100vh - 60px)" }}
               // renderTrackVertical={this.renderTrackVertical}
               // renderTrackVertical={props => <div {...props} className="track-vertical" />}
               renderTrackVertical={(props) => (
