@@ -89,17 +89,18 @@ const FaqAddModal = ({ isShow, onHide, fetchData }) => {
                                 name="categoryId"
                                 value={formValue.categoryId}
                                 onChange={handleChange}
-                                
+                                className='form_cntl_select'
                             >
                                 <option value="">Select Category</option>
                                 {categoryOption &&
                                     categoryOption.length > 0 &&
                                     categoryOption.map((item, key) => (
                                         <option key={key} value={item._id}
-                                        style={{
-                                            backgroundColor: '#333', // Dark background
-                                            color: '#fff' // White text
-                                        }}>
+                                        // style={{
+                                        //     backgroundColor: '#333', // Dark background
+                                        //     color: '#fff' // White text
+                                        // }}
+                                        >
                                             {item.name}
                                         </option>
                                     ))}

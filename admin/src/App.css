@@ -1184,3 +1184,20 @@ label {
 .table tbody td {
   text-align: center !important;
 }
+.form_cntl_select option{
+background-color: #000;
+color: #fff;
+}
+
+/* .form_cntl_select option:hover {
+  background-color: var(--themeyellow) !important;
+  font-size: 20px !important;
+}
+
+.form_cntl_select option:hover, .form_cntl_select option:active, .form_cntl_select option:focus {
+  background-color: var(--themeyellow);
+} */
+
+.f-20 {
+  font-size: 20px !important;
+}

@@ -109,6 +109,7 @@ class FaqUpdateModal extends React.Component {
                                         name={'categoryId'}
                                         value={categoryId}
                                         onChange={this.handleChange}
+                                        className='form_cntl_select'
                                     >
                                         <option value={''}>{"Select Category"}</option>
                                         {
