@@ -460,7 +460,7 @@ input::placeholder {
 .css-2b097c-container {
   position: relative;
   box-sizing: border-box;
-  z-index: 55555;
+  /* z-index: 55555; */
 }
 .card {
   background-color: var(--secondary-bg) !important;
@@ -1009,7 +1009,7 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active,
   min-width: 100px !important;
 }
 .basic-multi-select {
-  z-index: 1 !important;
+  /* z-index: 1 !important; */
 }
 /* .basic-multi-select>div
 {
@@ -1200,4 +1200,8 @@ color: #fff;
 
 .f-20 {
   font-size: 20px !important;
+}
+
+.faq .as-react-table table .answer {
+min-width: 300px;
 }
