@@ -45,6 +45,7 @@ import Anouncement from "../pages/anouncement";
 // import Staking from "../pages/Staking";
 import StakeSettlement from "../pages/StakeSettelment";
 import StakeOrder from "../pages/StakeHistory";
+import PreferredCurrency from '../pages/preferredCurrency.js';
 
 // import HelpCentreCategory from "../../components/pages/HelpCentrecategory.jsx"
 // import HelpCentreArticle from "../../components/pages/HelpcentreArticle.jsx"
@@ -234,7 +235,14 @@ const route = [
         sidemenu: true,
         type: "private"
     },
-
+    {
+        path: "/preferred-currency",
+        name: 'preferredCurrency',
+        component: PreferredCurrency,
+        exact: true,
+        sidemenu: true,
+        type: "private"
+    },
     {
         path: "/profile",
         name: 'Profile',

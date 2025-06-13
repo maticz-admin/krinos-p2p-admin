@@ -12,6 +12,7 @@ const initialFormValue = {
     categoryId: '',
     question: '',
     answer: '',
+    language : "en"
 };
 
 const FaqAddModal = ({ isShow, onHide, fetchData }) => {
@@ -89,7 +90,6 @@ const FaqAddModal = ({ isShow, onHide, fetchData }) => {
                                 name="categoryId"
                                 value={formValue.categoryId}
                                 onChange={handleChange}
-                                
                             >
                                 <option value="">Select Category</option>
                                 {categoryOption &&
@@ -106,6 +106,27 @@ const FaqAddModal = ({ isShow, onHide, fetchData }) => {
                             </Form.Control>
 
                             <span className="text-danger">{errors.categoryId}</span>
+                        </div>
+                    </div>
+
+                    <div className="row mt-2">
+                        <div className="col-md-3">
+                            <label>Language</label>
+                        </div>
+                        <div className="col-md-9">
+                            <Form.Control
+                                name="language"
+                                value={formValue?.language}
+                                onChange={handleChange}
+                                as="select"
+                                custom
+                            >
+                                <option value={"en"}>English</option>
+                                <option value={"sp"}>Spanish</option>
+                                {/* <option value={"fiat"}>Fiat</option> */}
+                            </Form.Control>
+
+                            <span className="text-danger">{errors.type}</span>
                         </div>
                     </div>
 
@@ -151,7 +172,7 @@ const FaqAddModal = ({ isShow, onHide, fetchData }) => {
                     Close
                 </button>
                 <button onClick={handleSubmit} className="btn btn-primary">
-                    Submit
+                    Submit   
                 </button>
             </Modal.Footer>
         </Modal>

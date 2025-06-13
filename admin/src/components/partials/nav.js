@@ -44,6 +44,15 @@ const nav = [
                 id: 'submenu2'
 
             },
+            {
+                path: "/preferred-currency",
+                name: 'Preferred Currency',
+                exact: true,
+                sidemenu: true,
+                type: "private",
+                id: 'submenu2'
+
+            },
             // {
             //     path: "/Pairmanagement",
             //     name: 'Pair Management',

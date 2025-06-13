@@ -27,7 +27,7 @@ const UserKyc = () => {
             align: "left",
             sortable: true,
             cell: (record) => {
-                const status = record.idProof?.status || "";
+                const status = record?.status || "";
                 return status.charAt(0).toUpperCase() + status.slice(1);
             }
         }
@@ -176,6 +176,8 @@ const UserKyc = () => {
         setLoader(true);
         try {
             const { status, loading, result } = await getAllUserKyc(reqData);
+            console.log("result in user kyc" , result);
+            
             setLoader(loading);
             if (status === 'success') {
                 setCount(result.count);

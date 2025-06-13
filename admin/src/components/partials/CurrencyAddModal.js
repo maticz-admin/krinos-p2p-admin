@@ -281,7 +281,7 @@ class CurrencyAddModal extends React.Component {
                   >
                     <option value={'crypto'}>Crypto</option>
                     <option value={'token'}>Token</option>
-                    {/* <option value={"fiat"}>Fiat</option> */}
+                    <option value={"fiat"}>Fiat</option>
                   </Form.Control>
 
                   <span className="text-danger">{errors.type}</span>
@@ -371,7 +371,7 @@ class CurrencyAddModal extends React.Component {
                 </div>
 
                 </div> */}
-              <div className="row mt-2">
+              {type != "fiat" &&<div className="row mt-2">
                 <div className="col-md-3">
                   <label>Bitgo Symbol</label>
                 </div>
@@ -407,9 +407,9 @@ class CurrencyAddModal extends React.Component {
                   </span>
                 </div>
 
-              </div>
+              </div>}
 
-              <div className="row mt-2">
+              {type != "fiat" &&<div className="row mt-2">
                 <div className="col-md-3">
                   <label>Deposit Status</label>
                 </div>
@@ -427,9 +427,9 @@ class CurrencyAddModal extends React.Component {
 
                   <span className="text-danger">{errors.depositStatus}</span>
                 </div>
-              </div>
+              </div>}
 
-              <div className="row mt-2">
+              {type != "fiat" &&<div className="row mt-2">
                 <div className="col-md-3">
                   <label>Withdraw Status</label>
                 </div>
@@ -447,7 +447,7 @@ class CurrencyAddModal extends React.Component {
 
                   <span className="text-danger">{errors.withdrawStatus}</span>
                 </div>
-              </div>
+              </div>}
 
 
               {
@@ -540,7 +540,7 @@ class CurrencyAddModal extends React.Component {
                   </div>
                 </div>
               }
-              {
+              {/* {
                 type == 'fiat' && <div className="row mt-2">
                   <div className="col-md-3">
                     <label htmlFor="taker_fees">Payment</label>
@@ -563,12 +563,12 @@ class CurrencyAddModal extends React.Component {
                     <span className="text-danger">{errors.payment}</span>
                   </div>
                 </div>
-              }
+              } */}
 
 
             
 
-              {
+              {/* {
                 ( type == 'fiat' && (!isEmpty(payment)) && payment.includes('upi')) ? <div className="row">
                   <div className="col-md-3">
                     <label>UPI</label>
@@ -588,9 +588,9 @@ class CurrencyAddModal extends React.Component {
                 </div>
                   : ''
 
-              }
+              } */}
 
-              {
+              {/* {
                 type == 'fiat' && (!isEmpty(payment)) && payment.includes('bank') && <div className="row mt-2">
                   <div className="col-md-3">
                     <label>Bank Name</label>
@@ -611,9 +611,9 @@ class CurrencyAddModal extends React.Component {
                     </span>
                   </div>
                 </div>
-              }
+              } */}
 
-              {
+              {/* {
                 type == 'fiat' && (!isEmpty(payment))&& payment.includes('bank') && <div className="row mt-2">
                   <div className="col-md-3">
                     <label>Account No.</label>
@@ -634,9 +634,9 @@ class CurrencyAddModal extends React.Component {
                     </span>
                   </div>
                 </div>
-              }
+              } */}
 
-              {
+              {/* {
                 type == 'fiat' && (!isEmpty(payment))&& payment.includes('bank') && <div className="row mt-2">
                   <div className="col-md-3">
                     <label>Holder Name</label>
@@ -657,9 +657,9 @@ class CurrencyAddModal extends React.Component {
                     </span>
                   </div>
                 </div>
-              }
+              } */}
 
-              {
+              {/* {
                 type == 'fiat' && (!isEmpty(payment))&& payment.includes('bank') && <div className="row mt-2">
                   <div className="col-md-3">
                     <label>IBAN Code</label>
@@ -680,9 +680,9 @@ class CurrencyAddModal extends React.Component {
                     </span>
                   </div>
                 </div>
-              }
+              } */}
 
-              {
+              {/* {
                 type == 'fiat' && (!isEmpty(payment))&& payment.includes('bank') && <div className="row mt-2">
                   <div className="col-md-3">
                     <label>Country</label>
@@ -703,10 +703,10 @@ class CurrencyAddModal extends React.Component {
                     </span>
                   </div>
                 </div>
-              }
+              } */}
 
 
-              <div className="row mt-2">
+              {type != "fiat" && <div className="row mt-2">
                 <div className="col-md-3">
                   <label htmlFor="fee">Withdrawal Fee(%)</label>
                 </div>
@@ -723,9 +723,9 @@ class CurrencyAddModal extends React.Component {
                   />
                   <span className="text-danger">{errors.withdrawFee}</span>
                 </div>
-              </div>
+              </div>}
 
-              <div className="row mt-2">
+              {type != "fiat" &&<div className="row mt-2">
                 <div className="col-md-3">
                   <label htmlFor="minimum">Minimum Withdrawal</label>
                 </div>
@@ -742,9 +742,9 @@ class CurrencyAddModal extends React.Component {
                   />
                   <span className="text-danger">{errors.minimumWithdraw}</span>
                 </div>
-              </div>
+              </div>}
 
-              <div className="row mt-2">
+              {type != "fiat" &&<div className="row mt-2">
                 <div className="col-md-3">
                   <label>Deposit Type</label>
                 </div>
@@ -765,7 +765,7 @@ class CurrencyAddModal extends React.Component {
                     {errors.depositType}
                   </span>
                 </div>
-              </div>
+              </div>}
 
               {depositType =="local" &&<>
               {/* <div className="row mt-2"> */}

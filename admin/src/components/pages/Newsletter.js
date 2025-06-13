@@ -175,7 +175,6 @@ const Newsletter = () => {
                                     <label htmlFor="content">Message</label>
                                 </div>
                                 <div className="col-md-9">
-                                    <span className="text-danger">{errors.message}</span>
                                     <CKEditor
                                         config={{
                                             extraAllowedContent: "div(*)",
@@ -185,6 +184,8 @@ const Newsletter = () => {
                                         initData={formValue.message}
                                         onChange={handleEditorChange}
                                     />
+                                    <span className="text-danger">{errors.message}</span>
+
                                 </div>
                             </div>
                         </form>

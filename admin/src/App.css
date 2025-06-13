@@ -1184,3 +1184,9 @@ label {
 .table tbody td {
   text-align: center !important;
 }
+
+
+
+.cke_warning, .cke_notification, .ckeditor-warning {
+  display: none !important;
+}

@@ -1,5 +1,5 @@
 let key = {};
-let env = 'demo' //production or local
+let env = 'dem' //production or local
 if (env == 'production') {
     const API_URL = 'https://api.tossvtoss.com/'
     key = {
@@ -17,8 +17,8 @@ if (env == 'production') {
         // Recaptchakey: "6LeKwCYjAAAAAMbORefOGhr-1AAXaTNTkL7MBJrV", // demo server
         Recaptchakey: "6LeKwCYjAAAAAMbORefOGhr-1AAXaTNTkL7MBJrV", // demo server
         API_URL: API_URL,
-        FRONT_URL: 'https://www.tossvtoss.com',
-        ADMIN_URL: 'https://krinosp2padmin.maticz.in/' ,
+        FRONT_URL: 'https://uat-p2p.krinos.app/',
+        ADMIN_URL: 'https://krinosp2padmin.maticz.in/',
         getGeoInfo: "https://ipapi.co/json/",
     };
 } 

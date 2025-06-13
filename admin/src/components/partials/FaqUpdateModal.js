@@ -13,7 +13,8 @@ const initialFormValue = {
     'categoryId': '',
     'question': '',
     'answer': '',
-    'status': 'active'
+    'status': 'active',
+    "language" : ""
 }
 
 class FaqUpdateModal extends React.Component {
@@ -34,7 +35,8 @@ class FaqUpdateModal extends React.Component {
                     'categoryId': record.categoryId,
                     'question': record.question,
                     'answer': record.answer,
-                    'status': record.status
+                    'status': record.status,
+                    "language" : record?.language ? record?.languages : "en"
                 }
             })
         }
@@ -120,6 +122,28 @@ class FaqUpdateModal extends React.Component {
                                         }
                                     </Form.Control>
                                     <span className="text-danger">{errors.category}</span>
+                                </div>
+                            </div>
+
+
+                            <div className="row mt-2">
+                                <div className="col-md-3">
+                                    <label>Language</label>
+                                </div>
+                                <div className="col-md-9">
+                                    <Form.Control
+                                        name="language"
+                                        value={this?.state?.formValue?.language}
+                                        onChange={this.handleChange}
+                                        as="select"
+                                        custom
+                                    >
+                                        <option value={"en"}>English</option>
+                                        <option value={"sp"}>Spanish</option>
+                                        {/* <option value={"fiat"}>Fiat</option> */}
+                                    </Form.Control>
+
+                                    <span className="text-danger">{errors.type}</span>
                                 </div>
                             </div>
 

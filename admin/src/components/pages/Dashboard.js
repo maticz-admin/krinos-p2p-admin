@@ -76,7 +76,7 @@ class Dashboard extends Component {
                                 </div>
 
 
-                                <div className="col-md-6 col-xl-4 p-sm-2 mb-4 mb-sm-0">
+                                {/* <div className="col-md-6 col-xl-4 p-sm-2 mb-4 mb-sm-0">
                                     <div className="card text-white shadow-lg" style={{ backgroundColor: "cadetblue" }}>
                                         <div className="card-body">
                                             <h5 className="card-title">Active Users</h5>
@@ -85,9 +85,9 @@ class Dashboard extends Component {
                                         </div>
 
                                     </div>
-                                </div>
+                                </div> */}
 
-                                <div className="col-md-6 col-xl-4 p-sm-2 mb-4 mb-sm-0">
+                                {/* <div className="col-md-6 col-xl-4 p-sm-2 mb-4 mb-sm-0">
                                     <div className="card text-white shadow-lg" style={{ backgroundColor: "#00c8b9" }}>
                                         <div className="card-body">
                                             <h5 className="card-title">Withdraw Request</h5>
@@ -96,9 +96,9 @@ class Dashboard extends Component {
                                         </div>
 
                                     </div>
-                                </div>
+                                </div> */}
 
-                                <div className="col-md-6 col-xl-4 p-sm-2 mb-4 mb-sm-0">
+                                {/* <div className="col-md-6 col-xl-4 p-sm-2 mb-4 mb-sm-0">
                                     <div className="card text-white shadow-lg" style={{ backgroundColor: "#181b1a" }}>
                                         <div className="card-body">
                                             <h5 className="card-title">KYC Request</h5>
@@ -107,7 +107,7 @@ class Dashboard extends Component {
                                         </div>
 
                                     </div>
-                                </div>
+                                </div> */}
 
                                  <div className="col-md-6 col-xl-4 p-sm-2 mb-4 mb-sm-0">
                                     <div className="card text-white shadow-lg" style={{ backgroundColor: "cornflowerblue" }}>

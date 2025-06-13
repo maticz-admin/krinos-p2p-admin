@@ -113,109 +113,111 @@ class MaliIntregate extends Component {
         } = this.state.formValue;
 
 
-        return (
-            <Card>
-                <Card.Header><p className="text-white"><b>Send In Blue</b></p></Card.Header>
-                <Card.Body>
-                    <div className='row mt-2'>
-                        <div className='col md-12'>
-                            <div className="row mt-2">
-                                <div className="col-md-3">
-                                    <label htmlFor="currencyName">user Name</label>
-                                </div>
-                                <div className="col-md-9">
-                                    <input
-                                        value={name}
-                                        onChange={this.handleChange}
-                                        name="name"
-                                        class='form-control'
-                                        error={errors && errors.name}
-                                        id="fromemail"
-                                        type="text"
-                                    />
-                                    <span className="text-danger">{errors && errors.mail}</span>
-                                </div>
-                            </div>
-                            <div className="row mt-2">
-                                <div className="col-md-3">
-                                    <label htmlFor="currencyName">Email</label>
-                                </div>
-                                <div className="col-md-9">
-                                    <input
-                                        value={fromemail}
-                                        onChange={this.handleChange}
-                                        name="fromemail"
-                                        class='form-control'
-                                        error={errors && errors.email}
-                                        id="host"
-                                        type="text"
-                                    />
-                                    <span className="text-danger">{errors && errors.name}</span>
-                                </div>
-                            </div>
-                            <div className="row mt-2">
-                                <div className="col-md-3">
-                                    <label htmlFor="currencyName">Api</label>
-                                </div>
-                                <div className="col-md-9">
-                                    <input
-                                        value={api}
-                                        onChange={this.handleChange}
-                                        name="api"
-                                        class='form-control'
-                                        error={errors && errors.api}
-                                        id="port"
-                                        type="text"
-                                    />
-                                    <span className="text-danger">{errors && errors.api}</span>
-                                </div>
-                            </div>
+        // return (
+        //     <Card>
+        //         <Card.Header><p className="text-white"><b>Send In Blue</b></p></Card.Header>
+        //         <Card.Body>
+        //             <div className='row mt-2'>
+        //                 <div className='col md-12'>
+        //                     <div className="row mt-2">
+        //                         <div className="col-md-3">
+        //                             <label htmlFor="currencyName">user Name</label>
+        //                         </div>
+        //                         <div className="col-md-9">
+        //                             <input
+        //                                 value={name}
+        //                                 onChange={this.handleChange}
+        //                                 name="name"
+        //                                 class='form-control'
+        //                                 error={errors && errors.name}
+        //                                 id="fromemail"
+        //                                 type="text"
+        //                             />
+        //                             <span className="text-danger">{errors && errors.mail}</span>
+        //                         </div>
+        //                     </div>
+        //                     <div className="row mt-2">
+        //                         <div className="col-md-3">
+        //                             <label htmlFor="currencyName">Email</label>
+        //                         </div>
+        //                         <div className="col-md-9">
+        //                             <input
+        //                                 value={fromemail}
+        //                                 onChange={this.handleChange}
+        //                                 name="fromemail"
+        //                                 class='form-control'
+        //                                 error={errors && errors.email}
+        //                                 id="host"
+        //                                 type="text"
+        //                             />
+        //                             <span className="text-danger">{errors && errors.name}</span>
+        //                         </div>
+        //                     </div>
+        //                     <div className="row mt-2">
+        //                         <div className="col-md-3">
+        //                             <label htmlFor="currencyName">Api</label>
+        //                         </div>
+        //                         <div className="col-md-9">
+        //                             <input
+        //                                 value={api}
+        //                                 onChange={this.handleChange}
+        //                                 name="api"
+        //                                 class='form-control'
+        //                                 error={errors && errors.api}
+        //                                 id="port"
+        //                                 type="text"
+        //                             />
+        //                             <span className="text-danger">{errors && errors.api}</span>
+        //                         </div>
+        //                     </div>
 
-                            <div className="row mt-2">
-                                <div className="col-md-3">
+        //                     <div className="row mt-2">
+        //                         <div className="col-md-3">
 
-                                    <label htmlFor="currencyName" >Mail Type</label>
-                                </div>
-                                <div className="col-md-9">
-                                    <div class="form-check form-check-inline">
-                                        <input
-                                            default={mailType}
-                                            class="form-check-input"
-                                            type="radio"
-                                            name="mailType"
-                                            value="nodeMailer"
-                                            onClick={this.HandleClick}
-                                            checked={mailType == 'nodeMailer'}
-                                        />
-                                        <label class="form-check-label" for="inlineRadio1"><b>NodeMailer</b></label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input
-                                            default={mailType}
-                                            class="form-check-input"
-                                            type="radio"
-                                            name="mailType"
-                                            value="sendinBlue"
-                                            onClick={this.HandleClick}
-                                            checked={mailType == 'sendinBlue'}
-                                        />
-                                        <label class="form-check-label" for="inlineRadio2"><b>sendinBlue</b></label>
-                                    </div>
-                                    {/* <span className="text-danger">{errors && errors.secure}</span> */}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
+        //                             <label htmlFor="currencyName" >Mail Type</label>
+        //                         </div>
+        //                         <div className="col-md-9">
+        //                             <div class="form-check form-check-inline">
+        //                                 <input
+        //                                     default={mailType}
+        //                                     class="form-check-input"
+        //                                     type="radio"
+        //                                     name="mailType"
+        //                                     value="nodeMailer"
+        //                                     onClick={this.HandleClick}
+        //                                     checked={mailType == 'nodeMailer'}
+        //                                 />
+        //                                 <label class="form-check-label" for="inlineRadio1"><b>NodeMailer</b></label>
+        //                             </div>
+        //                             <div class="form-check form-check-inline">
+        //                                 <input
+        //                                     default={mailType}
+        //                                     class="form-check-input"
+        //                                     type="radio"
+        //                                     name="mailType"
+        //                                     value="sendinBlue"
+        //                                     onClick={this.HandleClick}
+        //                                     checked={mailType == 'sendinBlue'}
+        //                                 />
+        //                                 <label class="form-check-label" for="inlineRadio2"><b>sendinBlue</b></label>
+        //                             </div>
+        //                             {/* <span className="text-danger">{errors && errors.secure}</span> */}
+        //                         </div>
+        //                     </div>
+        //                 </div>
+        //             </div>
 
 
-                </Card.Body>
-                <Card.Footer>
-                    <Button onClick={this.handleMailSubmit}>Submit</Button>
-                </Card.Footer>
-            </Card>
-        )
+
+
+        //         </Card.Body>
+        //         <Card.Footer>
+        //             <Button onClick={this.handleMailSubmit}>Submit</Button>
+        //         </Card.Footer>
+        //     </Card>
+        // )
+
+        return <></>
     }
 }
 

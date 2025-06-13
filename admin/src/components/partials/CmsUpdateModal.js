@@ -1,6 +1,6 @@
 import React from 'react'
 import classnames from "classnames";
-import { Modal } from "react-bootstrap";
+import { Form, Modal } from "react-bootstrap";
 import { CKEditor } from 'ckeditor4-react';
 
 // import action
@@ -14,7 +14,8 @@ const initialFormValue = {
     'identifier': '',
     'title': '',
     'content': '',
-    'image': ''
+    'image': '',
+    'language' : ''
 }
 
 class CmsUpdateModal extends React.Component {
@@ -36,7 +37,8 @@ class CmsUpdateModal extends React.Component {
                     'identifier': record.identifier,
                     'title': record.title,
                     'content': record.content,
-                    'image': record.image
+                    'image': record.image,
+                    'language' : record?.language ? record?.language : "en"
                 }
             })
         }
@@ -45,6 +47,8 @@ class CmsUpdateModal extends React.Component {
     handleChange = (e) => {
         e.preventDefault();
         let { name, value } = e.target;
+        console.log("name , vaue" , name , value);
+        
         let formData = { ...this.state.formValue, ...{ [name]: value } };
         this.setState({ formValue: formData });
     }
@@ -68,7 +72,7 @@ class CmsUpdateModal extends React.Component {
 
     handleSubmit = async e => {
         e.preventDefault();
-        const { id, identifier, title, content, image } = this.state.formValue;
+        const { id, identifier, title, content, image , language} = this.state.formValue;
         const { fetchData } = this.props;
 
         const formData = new FormData();
@@ -76,6 +80,7 @@ class CmsUpdateModal extends React.Component {
         formData.append('identifier', identifier);
         formData.append('title', title);
         formData.append('content', content);
+        formData.append('language', language);
         console.log('FormData contents:');
         formData.forEach((value, key) => {
             console.log(`${key}: ${value}`);
@@ -90,7 +95,8 @@ class CmsUpdateModal extends React.Component {
             id,
             identifier,
             title,
-            content
+            content,
+            language
         }
         const { status, loading, message, Errors } = await updateCms(formData);
         if (status == 'success') {
@@ -106,7 +112,7 @@ class CmsUpdateModal extends React.Component {
     };
 
     render() {
-        const { identifier, title, content } = this.state.formValue
+        const { identifier, title, content , language} = this.state.formValue
         const { errors } = this.state;
         const { isShow } = this.props;
        
@@ -142,6 +148,28 @@ class CmsUpdateModal extends React.Component {
                                     <span className="text-danger">{errors.identifier}</span>
                                 </div>
                             </div>
+
+                            <div className="row mt-2">
+                                <div className="col-md-3">
+                                    <label>Language</label>
+                                </div>
+                                <div className="col-md-9">
+                                    <Form.Control
+                                        name="language"
+                                        value={language}
+                                        onChange={this.handleChange}
+                                        as="select"
+                                        custom
+                                    >
+                                        <option value={"en"}>English</option>
+                                        <option value={"sp"}>Spanish</option>
+                                        {/* <option value={"fiat"}>Fiat</option> */}
+                                    </Form.Control>
+
+                                    <span className="text-danger">{errors.type}</span>
+                                </div>
+                            </div>
+
                             <div className="row mt-2">
                                 <div className="col-md-3">
                                     <label htmlFor="identifier">Page Name</label>

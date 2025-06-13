@@ -49,7 +49,7 @@ class Currency extends Component {
             },
             {
                 key: "status",
-                text: "status",
+                text: "Status",
                 className: "status",
                 align: "left",
                 sortable: true
