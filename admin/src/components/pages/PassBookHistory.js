@@ -45,17 +45,19 @@ class PassBookHistory extends Component {
       },
       {
         key: "tableId",
-        text: "TableId",
+        text: "Table Id",
         className: "status",
         align: "left",
         sortable: true,
+        width: 200,
       },
       {
         key: "userCodeId",
-        text: "UserId",
+        text: "User Id",
         className: "status",
         align: "left",
         sortable: true,
+        width: 200,
       },
       {
         key: "type",
