@@ -151,7 +151,7 @@ class Users extends Component {
             // },
             {
                 key: "kyc",
-                text: "Kyc",
+                text: "KYC",
                 className: "email",
                 align: "left",
                 sortable: true,
