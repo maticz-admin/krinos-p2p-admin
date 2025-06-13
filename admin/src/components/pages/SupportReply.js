@@ -146,16 +146,26 @@ const SupportReply = () => {
                                                     width={50}
                                                     className="rounded-circle"
                                                 />
-                                            )}
+                                             )} 
+                                             
                                             {/* )} */}
-                                            <div className={`media-body ${!isAdmin ? "ml-3" : ""}`}>
+                                            <div className={`media-body ${!isAdmin ? "ml-3" : "ml-3"}`}>
                                                 <div
-                                                    className={`rounded py-2 px-3 mb-2 ${isAdmin ? "bg-light-dark" : "bg-light"
+                                                    className={`d-flex align-items-center justify-content-between rounded py-2 px-3 mb-2 ${isAdmin ? "bg-light-dark" : "bg-light"
                                                         }`}
                                                 >
                                                     <p className={`text-small mb-0 ${!isAdmin ? "text-muted" : ""}`}>
                                                         {item.message}
                                                     </p>
+                                                    {!isEmpty(item.attachment) && (
+                                                    <a
+                                                        href={`${config.API_URL}/images/support/${item.attachment}`}
+                                                        target="_blank"
+                                                        rel="noreferrer"
+                                                    >
+                                                        <i className="fa fa-paperclip f-20" aria-hidden="true"></i>
+                                                    </a>
+                                                )}
                                                 </div>
                                                 <p className="small text-muted">
                                                     {new Intl.DateTimeFormat('en-US', {
@@ -168,15 +178,7 @@ const SupportReply = () => {
                                                     }).format(new Date(item.createdAt))}
                                                 </p>
 
-                                                {!isEmpty(item.attachment) && (
-                                                    <a
-                                                        href={`${config.API_URL}/images/support/${item.attachment}`}
-                                                        target="_blank"
-                                                        rel="noreferrer"
-                                                    >
-                                                        <i className="fa fa-paperclip fa-2x" aria-hidden="true"></i>
-                                                    </a>
-                                                )}
+                                                
                                             </div>
                                         </div>
                                     );

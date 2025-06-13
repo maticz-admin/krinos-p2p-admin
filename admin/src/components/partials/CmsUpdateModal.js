@@ -111,6 +111,27 @@ class CmsUpdateModal extends React.Component {
         }
     };
 
+    config = {
+        extraPlugins: 'justify,image2',
+        allowedContent: true,
+        height: 500,
+        toolbar: [
+          { name: 'document', items: ['Source', '-', 'Preview', 'Print'] },
+          { name: 'clipboard', items: ['Cut', 'Copy', 'Paste', 'Undo', 'Redo'] },
+          { name: 'editing', items: ['Find', 'Replace', '-', 'SelectAll'] },
+          { name: 'basicstyles', items: ['Bold', 'Italic', 'Underline', 'Strike'] },
+          { name: 'paragraph', items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent'] },
+          {
+            name: 'alignment',
+            items: ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+          },
+          { name: 'insert', items: ['Image', 'Table', 'HorizontalRule', 'SpecialChar'] },
+          { name: 'styles', items: ['Format', 'Font', 'FontSize'] },
+          { name: 'colors', items: ['TextColor', 'BGColor'] },
+          { name: 'tools', items: ['Maximize'] },
+        ],
+      }
+
     render() {
         const { identifier, title, content , language} = this.state.formValue
         const { errors } = this.state;
@@ -195,11 +216,18 @@ class CmsUpdateModal extends React.Component {
                                 <div className="col-md-9">
                                     <span className="text-danger">{errors.content}</span>
                                     <CKEditor
-                                        config={{
-                                            extraAllowedContent: 'div(*)',
-                                            allowedContent: true,
-                                            height: 500,
-                                        }}
+                                        // config={{
+                                        //     extraAllowedContent: 'div(*)',
+                                        //     allowedContent: true,
+                                        //     height: 500,
+                                        //     extraPlugins: 'justify',
+                                        //     toolbar: [
+                                        //         { name: 'basicstyles', items: ['Bold', 'Italic', 'Underline'] },
+                                        //         { name: 'paragraph', items: ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'] },
+                                        //         // Add more tool groups if needed
+                                        //       ],
+                                        // }}
+                                        config={this.config}
                                         initData={content}
                                         onChange={this.handleEditorChange}
                                     />

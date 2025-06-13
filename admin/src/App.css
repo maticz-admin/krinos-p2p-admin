@@ -460,7 +460,7 @@ input::placeholder {
 .css-2b097c-container {
   position: relative;
   box-sizing: border-box;
-  z-index: 55555;
+  /* z-index: 55555; */
 }
 .card {
   background-color: var(--secondary-bg) !important;
@@ -648,7 +648,7 @@ th.sortable {
   min-height: 100vh;
   background: var(--secondary-bg);
   /* overflow-y: scroll; */
-  top: 63px;
+  top: 60px;
   width: 250px !important;
 }
 @media only screen and (min-width: 992px) {
@@ -1009,7 +1009,7 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active,
   min-width: 100px !important;
 }
 .basic-multi-select {
-  z-index: 1 !important;
+  /* z-index: 1 !important; */
 }
 /* .basic-multi-select>div
 {
@@ -1189,4 +1189,25 @@ label {
 
 .cke_warning, .cke_notification, .ckeditor-warning {
   display: none !important;
+}
+.form_cntl_select option{
+background-color: #000;
+color: #fff;
+}
+
+/* .form_cntl_select option:hover {
+  background-color: var(--themeyellow) !important;
+  font-size: 20px !important;
+}
+
+.form_cntl_select option:hover, .form_cntl_select option:active, .form_cntl_select option:focus {
+  background-color: var(--themeyellow);
+} */
+
+.f-20 {
+  font-size: 20px !important;
+}
+
+.faq .as-react-table table .answer {
+min-width: 300px;
 }

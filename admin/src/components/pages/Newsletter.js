@@ -43,7 +43,7 @@ const Newsletter = () => {
         }));
         if (!isEmpty(selectedOption)) setErrors({});
     };
-    
+
 
     const handleSelectAll = () => {
         setFormValue((prevFormValue) => ({
@@ -51,7 +51,7 @@ const Newsletter = () => {
             subscribedId: subscribed.map((el) => el.value),
         }));
     };
-    
+
 
     const handleEditorChange = (e) => {
         const message = e.editor.getData();
@@ -61,7 +61,7 @@ const Newsletter = () => {
         }));
         if (!isEmpty(message)) setErrors({});
     };
-    
+
 
     const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -157,7 +157,6 @@ const Newsletter = () => {
                                                 className="border_blue_select basic-multi-select"
                                                 classNamePrefix="select w-full"
                                             />
-                                            <span className="text-danger">{errors.email}</span>
                                         </div>
                                         <button
                                             className="themebtn noshrink"
@@ -167,6 +166,7 @@ const Newsletter = () => {
                                             Select All
                                         </button>
                                     </div>
+                                    <p className="text-danger mt-1">{errors.email}</p>
                                 </div>
                             </div>
 
@@ -184,7 +184,7 @@ const Newsletter = () => {
                                         initData={formValue.message}
                                         onChange={handleEditorChange}
                                     />
-                                    <span className="text-danger">{errors.message}</span>
+                                    <p className="text-danger mt-1">{errors.message}</p>
 
                                 </div>
                             </div>

@@ -45,7 +45,7 @@ class FaqPage extends Component {
             {
                 key: "status",
                 text: "Status",
-                className: "answer",
+                className: "",
                 align: "left",
                 sortable: true
             },
@@ -210,7 +210,7 @@ class FaqPage extends Component {
         return (
             <div>
                 <Navbar />
-                <div className="d-flex" id="wrapper">
+                <div className="d-flex faq" id="wrapper">
                     <Sidebar />
                     <FaqAddModal isShow={addFormModal} onHide={this.handleCloseAddForm}
                         categoryOption={categoryOption} fetchData={this.refetch}
