@@ -66,7 +66,7 @@ class EditpaymenttypeModal extends React.Component {
                const fetchingData = await fetchData();
                 // console.log('result----', fetchingData, result?.data)
                 // // window.location.reload()
-                toastAlert('success', 'Payment type updated successfully');
+                toastAlert('success', 'Payment type has been successfully updated.');
                 this.handleClose()
             } else {
                 // if(error.pairName == 'Currency pair is not exists in binance'){

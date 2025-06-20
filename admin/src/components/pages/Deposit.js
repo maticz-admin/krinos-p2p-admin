@@ -28,7 +28,11 @@ class Deposit extends Component {
                 text: "Created date",
                 className: "created_date",
                 align: "left",
-                sortable: true
+                sortable: true,
+                cell: record => {
+                    // return momentFormat(record.createdAt, 'YYYY-MM-DD HH:mm')
+                    return new Date(record?.createdAt)?.toLocaleString()
+                }
             },
             {
                 key: "userId",

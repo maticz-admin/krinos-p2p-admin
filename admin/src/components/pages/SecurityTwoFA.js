@@ -218,7 +218,9 @@ class google2Fa extends React.Component {
                                                                 value={code}
                                                                 onChange={this.handleChange}
                                                             />
-                                                            {validateError.code && <p className="error-message" style={{ color: 'red' }}>{validateError.code}</p>}
+                                                            {validateError.code && <p className="error-message" style={{ color: 'red' }}>{
+                                                            validateError.code.charAt(0).toUpperCase() + validateError.code?.slice(1).toLowerCase()
+                                                            }</p>}
                                                         </div>
                                                     </div>
 

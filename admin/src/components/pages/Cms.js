@@ -17,7 +17,7 @@ class CmsPage extends Component {
 
         this.columns = [
             {
-                key: "identifier",
+                key: "title",
                 text: "Page name",
                 className: "identifier",
                 align: "left",

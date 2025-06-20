@@ -8,7 +8,7 @@ if (env == 'production') {
         API_URL: API_URL,
         FRONT_URL: 'https://www.tossvtoss.com',
         ADMIN_URL: 'https://contorls.tossvtoss.com/' ,
-        getGeoInfo: "https://ipapi.co/json/",
+        getGeoInfo: "https://geolocation-db.com/json/" //"https://ipapi.co/json/",
     };
 } else if (env == 'demo') {
     const API_URL = "https://backp2p-stage.krinos.app/" //'https://krinosp2p-backend.maticz.in/'
@@ -19,7 +19,7 @@ if (env == 'production') {
         API_URL: API_URL,
         FRONT_URL: 'https://uat-p2p.krinos.app/',
         ADMIN_URL: 'https://krinosp2padmin.maticz.in/',
-        getGeoInfo: "https://ipapi.co/json/",
+        getGeoInfo:  "https://geolocation-db.com/json/"//"https://ipapi.co/json/",
     };
 } 
 else {
@@ -29,7 +29,7 @@ else {
         Recaptchakey: "6LeHezUfAAAAAE_uuY_HFN5HoEVsQv8bpyC3xTat", //local
         API_URL: `${API_URL}:2054`,
         TRADE_URL: 'http://54.211.230.83:8081/api/trade',
-        getGeoInfo: "https://ipapi.co/json/",
+        getGeoInfo: "https://geolocation-db.com/json/",//"https://ipapi.co/json/",
         socialMedia: {
             facebook: {
                 appId: "1034988646970193"

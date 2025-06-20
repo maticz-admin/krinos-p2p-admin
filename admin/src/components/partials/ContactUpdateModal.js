@@ -144,6 +144,7 @@ class ContactUpdateModal extends React.Component {
                                             </div>  */}
                                             <div className="col-md-9">
                                                 <textarea className='form-control scroll_green_textarea'
+                                                value={this.state.rlyMsg}
                                                     onChange={this.handleChange}
                                                 >
                                               </textarea>

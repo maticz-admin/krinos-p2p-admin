@@ -33,7 +33,8 @@ class Withdraw extends Component {
                 align: "left",
                 sortable: true,
                 cell: record => {
-                    return momentFormat(record.createdAt, 'YYYY-MM-DD HH:mm')
+                    // return momentFormat(record.createdAt, 'YYYY-MM-DD HH:mm')
+                    return new Date(record?.createdAt)?.toLocaleString()
                 }
             },
             {

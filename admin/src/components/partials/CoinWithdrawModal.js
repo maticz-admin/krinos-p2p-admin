@@ -7,6 +7,7 @@ import { approveCoinWithdraw, rejectCoinWithdraw } from '../../actions/walletAct
 
 // import lib
 import { toastAlert } from '../../lib/toastAlert';
+import { toFixedNumber } from "../../lib/roundOf";
 
 class CoinWithdrawModal extends Component {
     constructor(props) {
@@ -119,10 +120,10 @@ class CoinWithdrawModal extends Component {
                         </div>
                         <div className="row mt-2">
                             <div className="col-md-3">
-                                <label htmlFor="answer">Commission Fee(%)</label>
+                                <label htmlFor="answer">Commission Fee</label>
                             </div>
                             <div className="col-md-9">
-                                {record.commissionFee}
+                                {toFixedNumber(parseFloat(record.commissionFee))}
                             </div>
                         </div>
 
@@ -131,7 +132,7 @@ class CoinWithdrawModal extends Component {
                                 <label htmlFor="answer">Total Amount</label>
                             </div>
                             <div className="col-md-9">
-                                {record.amount}
+                                {toFixedNumber(parseFloat(record.amount))}
                             </div>
                         </div>
 

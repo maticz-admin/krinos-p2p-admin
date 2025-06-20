@@ -121,9 +121,9 @@ class Dashboard extends Component {
                                 <div className="col-md-6 col-xl-4 p-sm-2 mb-4 mb-sm-0">
                                     <div className="card text-white shadow-lg" style={{ backgroundColor: "cornflowerblue" }}>
                                         <div className="card-body">
-                                            <h5 className="card-title">2FA</h5>
+                                            <h5 className="card-title">Deposit</h5>
                                             <p className="card-text">{records && records.depositCount}</p>
-                                            <Link to="/security" className="btn btn-light">View</Link>
+                                            <Link to="/deposit" className="btn btn-light">View</Link>
                                         </div>
                                     </div>
                                 </div>

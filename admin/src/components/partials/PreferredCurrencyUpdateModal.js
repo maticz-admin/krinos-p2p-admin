@@ -347,7 +347,8 @@ class PreferredCurrencyUpdateModal extends React.Component {
                   />
                   Choose File
                   </label>
-                  <span className="text-danger">{errors.image}</span>
+                  {errors?.image &&<span className="text-danger">{errors?.image?.charAt(0)?.toUpperCase() + errors?.image?.slice(1)?.toLowerCase()}
+                  </span>}
                   <img
                     className="img-fluid proofThumb"
                     src={fileObjectUrl(image)}
