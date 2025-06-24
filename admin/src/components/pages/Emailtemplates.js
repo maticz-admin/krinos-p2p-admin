@@ -34,13 +34,13 @@ class Emailtemplates extends Component {
                 align: "left",
                 sortable: true,
             },
-            {
-                key: "langCode",
-                text: "Language Code",
-                className: "subject",
-                align: "left",
-                sortable: true,
-            },
+            // {
+            //     key: "langCode",
+            //     text: "Language Code",
+            //     className: "subject",
+            //     align: "left",
+            //     sortable: true,
+            // },
             {
                 key: "status",
                 text: "Status",

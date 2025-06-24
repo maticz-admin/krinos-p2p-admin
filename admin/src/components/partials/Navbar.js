@@ -57,9 +57,9 @@ class Navbar extends Component {
                                        Google 2FA
                                      </Link>
 
-                                     <a className="nav-link" href="/login"  onClick={this.onLogoutClick}>Logout ({user.name}) <FontAwesomeIcon icon={faSignOutAlt} /> </a>
+                                     <a className="nav-link" href="/login"  onClick={this.onLogoutClick}>Logout <FontAwesomeIcon icon={faSignOutAlt} /> </a>
 
-                                
+                                {/* ({user.name}) */}
 
                                 </div>
                             </li>
