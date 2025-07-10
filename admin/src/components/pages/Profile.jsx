@@ -15,6 +15,7 @@ import keys from "../../actions/config";
 import { withRouter } from "react-router-dom";
 import { getProfile } from "../../actions/admin";
 import EditProfileModel from "../partials/EditProfileModeal"
+import { toastAlert } from "../../lib/toastAlert";
 const url = keys.baseUrl;
 class Profile extends Component {
     constructor(props) {
@@ -40,6 +41,12 @@ class Profile extends Component {
     }
       componentDidMount() {
        this.getAdminDetails()
+       console.log("componentDidMount profile" , Date.now());
+       
+    }
+
+    componentDidUpdate(){
+        console.log("componentDidUpdate profile" , Date.now());
     }
     render() {
         const { records,addFormModal } = this.state;
@@ -48,25 +55,27 @@ class Profile extends Component {
                 <Navbar />
                 <div className="d-flex" id="wrapper">
                     <Sidebar />
-                    <EditProfileModel
+
+                    {this.state?.records && <EditProfileModel
                         recorddata = {records}
                         isShow={addFormModal}
                         onHide={this.handleCloseAddForm}
                         fetchData={this.getAdminDetails}
-                    />
+                        toastAlert = {toastAlert}
+                    />}
                     <div id="page-content-wrapper">
 
                        
                         <div className="container-fluid">
 
                         <button
-                                    onClick={() => this.addRecord()}
+                                     oClick={() => this.addRecord()}
+                                    
                                     className="btn btn-outline-primary float-right mt-3 mr-2"
                                 ><FontAwesomeIcon icon={faPlus} className="mr-1" />Edit Profile
                                 </button>
                                 <div className="clearfix" />
                             <h3 className="mt-2 text-secondary">Profile Page</h3>
-
                             <div >
                                 <form class="form-group">
                                     <div className="row mt-2">
@@ -140,7 +149,7 @@ class Profile extends Component {
                         </div>
                     </div>
                    
-                    <ToastContainer />
+                    {/* <ToastContainer /> */}
                 </div>
             </div>
         );

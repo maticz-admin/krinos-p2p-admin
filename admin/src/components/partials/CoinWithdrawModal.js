@@ -142,7 +142,7 @@ class CoinWithdrawModal extends Component {
                                 <label htmlFor="answer">Status</label>
                             </div>
                             <div className="col-md-9">
-                                {record.status}
+                                {record.status == 'rejected' ? 'Rejected' : record?.status == 'completed' ? 'Completed' : record?.status == 'time_expired' ? 'Time Expire' : ""}
                             </div>
                         </div>
                     </div>

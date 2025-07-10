@@ -1,12 +1,13 @@
 import React from "react";
 import classnames from "classnames";
 import { Modal, Form } from "react-bootstrap";
+// import { toast } from 'react-toastify';
 
 // import lib
 import fileObjectUrl from '../../lib/fileObjectUrl'
 import isEmpty from '../../lib/isEmpty'
 import { editProfile } from "../../actions/admin";
-import { toastAlert } from '../../lib/toastAlert'
+// import { toastAlert } from '../../lib/toastAlert'
 class EditProfileModel extends React.Component {
     constructor() {
         super()
@@ -24,6 +25,14 @@ class EditProfileModel extends React.Component {
         const { onHide } = this.props;
         onHide();
         // this.setState({ 'formValue': initialValue, errors: {} });
+    }
+    componentDidMount() {
+       console.log("componentDidMount editprofile" , Date.now());
+       
+    }
+    componentDidUpdate(){
+        console.log("componentDidUpdate editprofile" , Date.now());
+        
     }
     componentWillReceiveProps() {
         this.setState({
@@ -43,13 +52,18 @@ class EditProfileModel extends React.Component {
         let { status, message } = await editProfile(data)
         
         if (status) {
+            console.log("edit record", Date.now());
+            const { onHide, fetchData , toastAlert} = this.props;
+
+            
             toastAlert('success', message)
-            const { onHide, fetchData } = this.props;
+            // toast.success(message);
+         //   window.alert("hii")
             onHide();
             fetchData()
 
         } else {
-            toastAlert('error', message)
+            // toastAlert('error', message)
         }
 
     }

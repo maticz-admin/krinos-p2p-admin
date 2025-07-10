@@ -147,7 +147,7 @@ class Changepassword extends Component {
               >
                 <div className="row mt-2">
                   <div className="col-md-3">
-                    <label htmlFor="name">Otp</label>
+                    <label htmlFor="name">OTP</label>
                   </div>
                   <div className="col-md-6">
                     <input
@@ -292,7 +292,7 @@ class Changepassword extends Component {
               </button>
             </div>
           </div>
-          <ToastContainer />
+          {/* <ToastContainer /> */}
         </div>
       </div>
     );

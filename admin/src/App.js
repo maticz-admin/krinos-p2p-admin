@@ -140,7 +140,6 @@ class App extends Component {
         let restriction = records.isRun.restriction
         return (
             <Provider store={store}>
-                <ToastContainer />
                 <Router basename={'/'}>
                     <div className="App">
                         <Switch>
@@ -269,7 +268,10 @@ class App extends Component {
 
                             </Switch>
                             <Route exact path="*" component={NotFound} />
+
                         </Switch>
+                <ToastContainer />
+
                     </div>
                 </Router>
             </Provider>

@@ -28,11 +28,8 @@ class PassBookHistory extends Component {
           return(
               <Fragment>
                 {moment.utc(record.createdAt).local().format("DD-MM-YYYY  h:mm a ")}
-              
               </Fragment>
           )
-          
-
       }
       },
       {
@@ -65,6 +62,8 @@ class PassBookHistory extends Component {
         className: "type",
         align: "left",
         sortable: true,
+        cell:record=> <p>{record?.type.charAt(0).toUpperCase() + record?.type?.slice(1)}</p>
+          
       },
       {
         key: "category",
@@ -73,6 +72,7 @@ class PassBookHistory extends Component {
         align: "left",
         sortable: true,
         width: 200,
+        cell:record=> <p>{record?.type.charAt(0).toUpperCase() + record?.type?.slice(1)}</p>
       },
 
       {

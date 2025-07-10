@@ -69,6 +69,7 @@ import P2pDispute from '../pages/P2pDispute'
 import PassBookHistory from "../pages/PassBookHistory"
 import Offer from "../pages/Offer"
 import Paymenttypes from '../pages/Paymenttypes';
+import Toastcheck from '../pages/toastchecking.js';
 
 
 //2fa
@@ -345,6 +346,13 @@ const route = [
         component: PassBookHistory,
         exact: true,
         sidemenu: true,
+    },
+    {
+        path: "/check-toasts",
+        name: 'checktoast',
+        exact: true,
+        sidemenu: true,
+        component: Toastcheck
     },
   
 ]

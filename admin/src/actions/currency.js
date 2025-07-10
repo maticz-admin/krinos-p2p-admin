@@ -49,16 +49,16 @@ export const addCurrency = async (reqData) => {
             // 'data': {encode: encodedata(reqData)}
             'data': reqData
         });
-        const response = decodedata(respData.data);
+        // const response = decodedata(respData.data);
       
         return {
             status: "success",
             loading: false,
-            message: response.message
+            message: respData.data.message
         }
     } catch (err) {
        
-        let errors = decodedata(err.response.data)
+        let errors = err.response.data;//decodedata(err.response.data)
         if (errors.errors) {
             handleResp(err, 'err')
             return {

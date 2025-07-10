@@ -12,7 +12,6 @@ import { toFixedNumber } from "../../lib/roundOf";
 class FiatWithdrawModal extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
             loader: false
         };
@@ -168,7 +167,9 @@ class FiatWithdrawModal extends Component {
                                 <label htmlFor="answer">Status</label>
                             </div>
                             <div className="col-md-9">
-                                {record.status}
+                                {record.status == 'rejected' ? 'Rejected' : record?.status == 'completed' ? 'Completed' : record?.status == 'time_expired' ? 'Time Expire' : ""}
+
+                                
                             </div>
                         </div>
                     </div>

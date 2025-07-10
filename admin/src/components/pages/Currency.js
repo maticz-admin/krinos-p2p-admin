@@ -316,7 +316,6 @@ class Currency extends Component {
                             />
                         </div>
                     </div>
-                    <ToastContainer />
                 </div>
             </div>
         );

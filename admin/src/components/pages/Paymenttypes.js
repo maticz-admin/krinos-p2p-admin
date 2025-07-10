@@ -109,6 +109,7 @@ class Paymenttypes extends Component {
             page: 1,
             limit: 10,
             count: 0,
+            search : ""
 
         };
 
@@ -129,10 +130,14 @@ class Paymenttypes extends Component {
         this.getpaymenttypes(payload)
     };
 
-    async getpaymenttypes(data) {
+    async getpaymenttypes() {
         try {
+            let data = { page: this.state.page, limit: this.state.limit, search: this.state.search }
+
             console.log('datadatadata------', data)
             var result = await Getpaymenttypehook(data);
+            console.log("result?.data" , result?.data);
+            
             if (result?.data?.type == "success") {
                 // var value = this?.state?.count + this?.state?.limit
                 this.setState({ "count": result?.data?.count, 'records': result?.data?.data })
