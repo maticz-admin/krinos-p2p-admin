@@ -1,5 +1,5 @@
 let key = {};
-let env = 'dem' //production or local
+let env = 'demo' //production or local
 if (env == 'production') {
     const API_URL = 'https://api.tossvtoss.com/'
     key = {
@@ -11,11 +11,13 @@ if (env == 'production') {
         getGeoInfo: "https://geolocation-db.com/json/" //"https://ipapi.co/json/",
     };
 } else if (env == 'demo') {
-    const API_URL = "https://backp2p-stage.krinos.app/" //'https://krinosp2p-backend.maticz.in/'
+    // const API_URL = "https://backp2p-stage.krinos.app/" 
+    const API_URL = 'https://krinosp2p-backend.maticz.in/'
     key = {
         secretOrKey: "FxUum76z",
         // Recaptchakey: "6LeKwCYjAAAAAMbORefOGhr-1AAXaTNTkL7MBJrV", // demo server
-        Recaptchakey: "6LeKwCYjAAAAAMbORefOGhr-1AAXaTNTkL7MBJrV", // demo server
+        // Recaptchakey: "6LeKwCYjAAAAAMbORefOGhr-1AAXaTNTkL7MBJrV", // stag server
+        Recaptchakey : "6LcNAH4rAAAAAMcji4ul5LhrLqALIWjglOhm",
         API_URL: API_URL,
         FRONT_URL: 'https://uat-p2p.krinos.app/',
         ADMIN_URL: 'https://krinosp2padmin.maticz.in/',
