@@ -9,7 +9,7 @@ import {connect} from "react-redux";
 import axios from "axios";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
 import SupportReplyModal from "../partials/SupportReplyModal";
-import { toast, ToastContainer} from "react-toastify";
+import { toast } from "react-toastify";
 import keys from "../../actions/config";
 const url = keys.baseUrl;
 class tradehistory extends Component {
@@ -152,7 +152,7 @@ class tradehistory extends Component {
                             />
                         </div>
                     </div>
-                    <ToastContainer/>
+                    
                 </div>
             </div>
         );

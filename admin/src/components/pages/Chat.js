@@ -9,7 +9,7 @@ import {connect} from "react-redux";
 import axios from "axios";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
 // import ContactUpdateModal from "../partials/ContactUpdateModal";
-import { toast, ToastContainer} from "react-toastify";
+import { toast } from "react-toastify";
 import keys from "../../actions/config";
 const url = keys.baseUrl;
 class Chat extends Component {
@@ -154,7 +154,7 @@ class Chat extends Component {
                             />
                         </div>
                     </div>
-                    <ToastContainer/>
+                    
                 </div>
             </div>
         );

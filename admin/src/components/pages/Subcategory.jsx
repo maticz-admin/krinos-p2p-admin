@@ -10,7 +10,7 @@ import axios from "axios";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
 // import SubCategoryAddModal from "../partials/SubcategoryAddModal.jsx";
 import SubCategoryUpdateModal from "../partials/SubcategoryUpdateModal.jsx";
-import { toast, ToastContainer} from "react-toastify";
+import { toast } from "react-toastify";
 import $ from 'jquery';
 import keys from "../../actions/config";
 const url = keys.baseUrl;
@@ -189,7 +189,7 @@ class SubCategory extends Component {
                             />
                         </div>
                     </div>
-                    <ToastContainer/>
+
                 </div>
             </div>
         );

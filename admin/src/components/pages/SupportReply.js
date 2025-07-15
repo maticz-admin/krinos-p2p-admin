@@ -18,6 +18,8 @@ import { momentFormat } from '../../lib/dateTimeHelper';
 import { viewUserProfile } from '../../actions/admin';
 
 import { useNavigate } from 'react-router-dom';
+import NoImage from "../../images/No_image_available.png";
+
 const initialFormValue = {
     message: "",
 };
@@ -141,10 +143,17 @@ const SupportReply = () => {
                                             ) : ( */}
                                             {!isAdmin && (
                                                 <img
-                                                    src={`${config.API_URL}/user_profile_img/${profileImage}`}
+                                                    src={
+                                                        profileImage
+                                                        ?
+                                                        `${config.API_URL}/user_profile_img/${profileImage}`
+                                                        :
+                                                        require("../../images/No_image_available.png")
+                                                        }
                                                     alt="user"
                                                     width={50}
                                                     className="rounded-circle"
+                                                    onError={(e)=>e.target.src=NoImage}
                                                 />
                                              )} 
                                              

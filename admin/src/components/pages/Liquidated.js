@@ -4,7 +4,7 @@ import ReactDatatable from '@ashvin27/react-datatable';
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import axios from "axios";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 
 
 import keys from "../../actions/config";
@@ -251,7 +251,7 @@ class Liquidated extends Component {
                             />
                         </div>
                     </div>
-                    <ToastContainer />
+                    
                 </div>
             </div>
         );

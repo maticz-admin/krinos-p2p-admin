@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { updatearticle } from "../../actions/category";
 import { withRouter } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 
 import $ from "jquery";
 import { Editor } from "@tinymce/tinymce-react";

@@ -9,7 +9,7 @@ import {connect} from "react-redux";
 import { updateSettings } from "../../actions/userActions";
 import axios from "axios";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
-import { toast, ToastContainer} from "react-toastify";
+import { toast } from "react-toastify";
 import keys from "../../actions/config";
 import { withRouter } from "react-router-dom";
 import Select from 'react-select';
@@ -487,7 +487,7 @@ class Settings extends Component {
                                 </button>
                         </div>
                     </div>
-                    <ToastContainer/>
+                    
                 </div>
             </div>
         );

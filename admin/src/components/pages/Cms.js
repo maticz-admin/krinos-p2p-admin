@@ -24,6 +24,13 @@ class CmsPage extends Component {
                 sortable: true
             },
             {
+                key: "title",
+                text: "Page name",
+                className: "identifier",
+                align: "left",
+                sortable: true
+            },
+            {
                 key: "status",
                 text: "Status",
                 className: "identifier",

@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { updateChangepassword } from "../../actions/userActions";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import keys from "../../actions/config";
 import { getProfile, sendMail, changePassword } from '../../actions/admin'
 
@@ -292,7 +292,6 @@ class Changepassword extends Component {
               </button>
             </div>
           </div>
-          {/* <ToastContainer /> */}
         </div>
       </div>
     );

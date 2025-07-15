@@ -10,7 +10,7 @@ import { connect } from "react-redux";
 import { updateProfile } from "../../actions/userActions";
 import axios from "axios";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import keys from "../../actions/config";
 import { withRouter } from "react-router-dom";
 import { getProfile } from "../../actions/admin";
@@ -68,12 +68,12 @@ class Profile extends Component {
                        
                         <div className="container-fluid">
 
-                        <button
+                        {/* <button
                                      oClick={() => this.addRecord()}
                                     
                                     className="btn btn-outline-primary float-right mt-3 mr-2"
                                 ><FontAwesomeIcon icon={faPlus} className="mr-1" />Edit Profile
-                                </button>
+                                </button> */}
                                 <div className="clearfix" />
                             <h3 className="mt-2 text-secondary">Profile Page</h3>
                             <div >
@@ -149,7 +149,7 @@ class Profile extends Component {
                         </div>
                     </div>
                    
-                    {/* <ToastContainer /> */}
+                    
                 </div>
             </div>
         );

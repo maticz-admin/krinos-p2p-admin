@@ -85,7 +85,25 @@ class Deposit extends Component {
                 text: "Status",
                 className: "status",
                 align: "left",
-                sortable: true
+                sortable: true,
+                cell: record => {
+                    switch (record.status) {
+                        case 'rejected':
+                            return 'Rejected';
+                        case 'completed':
+                            return 'Completed';
+                        case 'pending':
+                            return 'Pending';
+                        case "cancelled":
+                            return "Cancelled";
+                        case "cancelled":
+                            return "Cancelled";
+                        case "time_expired":
+                            return "Time Expired";
+                        default:
+                            return (record?.status?record.status:"Pending");
+                    }
+                }
             },
             {
                 key: "action",

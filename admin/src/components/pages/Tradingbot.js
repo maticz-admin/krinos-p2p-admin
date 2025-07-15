@@ -6,7 +6,7 @@ import classnames from "classnames";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import axios from "axios";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import { withRouter } from "react-router-dom";
 
 

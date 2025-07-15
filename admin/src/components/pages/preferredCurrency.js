@@ -3,7 +3,7 @@ import ReactDatatable from '@ashvin27/react-datatable';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
-import { ToastContainer } from "react-toastify";
+
 
 // import component
 import Navbar from "../partials/Navbar";
@@ -308,7 +308,7 @@ class PreferredCurrency extends Component {
                             />
                         </div>
                     </div>
-                    <ToastContainer />
+                    
                 </div>
             </div>
         );

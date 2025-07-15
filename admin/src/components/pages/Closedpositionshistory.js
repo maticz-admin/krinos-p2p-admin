@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import axios from "axios";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import keys from "../../actions/config";
 import { closePosition } from '../../actions/derivativeAction'
 const url = keys.baseUrl;
@@ -182,7 +182,6 @@ class Closedpositions extends Component {
                             />
                         </div>
                     </div>
-                    <ToastContainer />
                 </div>
             </div>
         );

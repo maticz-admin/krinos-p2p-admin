@@ -11,7 +11,7 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import ContactUpdateModal from "../partials/ContactUpdateModal";
 import ContactViewModal from "../partials/ContactViewModal";
 
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import keys from "../../actions/config";
 
 

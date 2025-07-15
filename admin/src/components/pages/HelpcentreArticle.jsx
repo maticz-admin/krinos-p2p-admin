@@ -10,7 +10,7 @@ import axios from "axios";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import ArticleAddModal from "../partials/HelpCentreArticleAddmodal.jsx";
 import ArticleUpdateModal from "../partials/HelpCentreArticleupdateModal.jsx";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import $ from "jquery";
 import keys from "../../actions/config";
 const url = keys.baseUrl;
@@ -211,7 +211,7 @@ class Perpetual extends Component {
               />
             </div>
           </div>
-          <ToastContainer />
+          
         </div>
       </div>
     );

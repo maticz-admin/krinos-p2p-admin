@@ -10,7 +10,7 @@ import { updatedynamic,getTableDataDynamic } from "../../actions/userActions";
 
 import axios from "axios";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import keys from "../../actions/config";
 import { withRouter } from "react-router-dom";
 
@@ -266,7 +266,6 @@ componentWillReceiveProps(nextProps) {
               </button>
             </div>
           </div>
-          <ToastContainer />
         </div>
       </div>
     );

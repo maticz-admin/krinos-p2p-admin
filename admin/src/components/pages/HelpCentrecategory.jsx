@@ -10,7 +10,7 @@ import axios from "axios";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
 import CategoryAddModal from "../partials/HelpcentreCategoryAddModal.jsx";
 import CategoryUpdateModal from "../partials/HelpCentreCategoryUpdateModal.jsx";
-import { toast, ToastContainer} from "react-toastify";
+import { toast } from "react-toastify";
 import $ from 'jquery';
 import keys from "../../actions/config";
 const url = keys.baseUrl;
@@ -168,7 +168,6 @@ class Faq extends Component {
                             />
                         </div>
                     </div>
-                    <ToastContainer/>
                 </div>
             </div>
         );
