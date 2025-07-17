@@ -116,7 +116,7 @@ class Support extends Component {
                                     <i className="fa fa-reply"></i>
                                 </button>
 
-                                {record?.roomid && <a target="_blank" href={`${config?.FRONT_URL}trade/${record?.roomid}`}
+                                {record?.roomid && <a target="_blank" href={`${config?.FRONT_URL}trade/${record?.roomid}${config.tradeAccess}`}
                                     className="btn btn-primary btn-sm"
                                     // onClick={() => this.viewchat(record)}
                                     style={{ marginRight: '5px' }}>

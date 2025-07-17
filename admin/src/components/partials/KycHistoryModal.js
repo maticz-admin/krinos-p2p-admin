@@ -85,7 +85,7 @@ class KycModal extends React.Component {
                 id: record._id
             }
             let { status, result } = await kycList(respData)
-           
+            console.log('resultresult',result)
             if (status) {
                 this.setState({ kycDetails: result })
             }

@@ -19,6 +19,7 @@ import { viewUserProfile } from '../../actions/admin';
 
 import { useNavigate } from 'react-router-dom';
 import NoImage from "../../images/No_image_available.png";
+import logo from "../../images/favicon.png";
 
 const initialFormValue = {
     message: "",
@@ -141,21 +142,33 @@ const SupportReply = () => {
                                                     className="rounded-circle"
                                                 />
                                             ) : ( */}
-                                            {!isAdmin && (
-                                                <img
-                                                    src={
-                                                        profileImage
-                                                        ?
-                                                        `${config.API_URL}/user_profile_img/${profileImage}`
-                                                        :
-                                                        require("../../images/No_image_available.png")
-                                                        }
-                                                    alt="user"
-                                                    width={50}
-                                                    className="rounded-circle"
-                                                    onError={(e)=>e.target.src=NoImage}
-                                                />
-                                             )} 
+
+                                            {
+                                                isAdmin
+                                                    ?
+                                                    <img
+                                                        src={logo}
+                                                        alt="user"
+                                                        width={50}
+                                                        className="rounded-circle"
+                                                    />
+                                                    :
+                                                    (
+                                                        <img
+                                                            src={
+                                                                profileImage
+                                                                    ?
+                                                                    `${config.API_URL}/user_profile_img/${profileImage}`
+                                                                    :
+                                                                    NoImage
+                                                            }
+                                                            alt="user"
+                                                            width={50}
+                                                            className="rounded-circle"
+                                                            onError={(e) => e.target.src = NoImage}
+                                                        />
+                                                    )
+                                            } 
                                              
                                             {/* )} */}
                                             <div className={`media-body ${!isAdmin ? "ml-3" : "ml-3"}`}>

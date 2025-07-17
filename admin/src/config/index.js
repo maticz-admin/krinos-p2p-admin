@@ -47,5 +47,6 @@ else {
         FRONT_URL: `${API_URL}:3000/`
     };
 }
+key.tradeAccess = `?from=admin`
 
 export default key;
