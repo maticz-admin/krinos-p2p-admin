@@ -30,6 +30,7 @@ class CmsUpdateModal extends React.Component {
 
     componentWillReceiveProps(nextProps) {
         const { record } = nextProps;
+        console.log('recordrecord',record)
         if (record) {
             this.setState({
                 formValue: {

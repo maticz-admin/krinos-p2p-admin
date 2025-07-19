@@ -24,11 +24,31 @@ class CmsPage extends Component {
                 sortable: true
             },
             {
-                key: "title",
-                text: "Page name",
+                key: "identifier",
+                text: "Identifier",
                 className: "identifier",
                 align: "left",
                 sortable: true
+            },
+            {
+                key: "language",
+                text: "Language",
+                className: "identifier",
+                align: "left",
+                sortable: true,
+                cell: record => {
+                    return (
+                        <>
+                        {
+                            record?.language == 'sp'
+                            ?
+                            "Spanish"
+                            :
+                            "English"
+                        }
+                        </>
+                    );
+                }
             },
             {
                 key: "status",

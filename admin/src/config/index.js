@@ -1,7 +1,7 @@
 let key = {};
-let env = 'local' //production or local
+let env = 'staging' //production or local
 if (env == 'production') {
-    const API_URL = 'https://api.tossvtoss.com/'
+    const API_URL = 'https://api.tossvtoss.com'
     key = {
         secretOrKey: "FxUum76z",
         Recaptchakey: "6LeKwCYjAAAAAMbORefOGhr-1AAXaTNTkL7MBJrV", //local
@@ -10,9 +10,10 @@ if (env == 'production') {
         ADMIN_URL: 'https://contorls.tossvtoss.com/' ,
         getGeoInfo: "https://geolocation-db.com/json/" //"https://ipapi.co/json/",
     };
-} else if (env == 'demo') {
+}
+else if (env == 'demo') {
     // const API_URL = "https://backp2p-stage.krinos.app/" 
-    const API_URL = 'https://krinosp2p-backend.maticz.in/'
+    const API_URL = 'https://krinosp2p-backend.maticz.in'
     key = {
         secretOrKey: "FxUum76z",
         // Recaptchakey: "6LeKwCYjAAAAAMbORefOGhr-1AAXaTNTkL7MBJrV", // demo server
@@ -21,6 +22,20 @@ if (env == 'production') {
         API_URL: API_URL,
         FRONT_URL: 'https://krinosp2p.maticz.in/',
         ADMIN_URL: 'https://krinosp2padmin.maticz.in/',
+        getGeoInfo:  "https://geolocation-db.com/json/"//"https://ipapi.co/json/",
+    };
+}
+else if (env == 'staging') {
+    // const API_URL = "https://backp2p-stage.krinos.app/" 
+    const API_URL = 'https://backp2p-stage.krinos.app'
+    key = {
+        secretOrKey: "FxUum76z",
+        // Recaptchakey: "6LeKwCYjAAAAAMbORefOGhr-1AAXaTNTkL7MBJrV", // demo server
+        // Recaptchakey: "6LeKwCYjAAAAAMbORefOGhr-1AAXaTNTkL7MBJrV", // stag server
+        Recaptchakey : "6LcNAH4rAAAAAMcji4ul5LhrLqALIWjglOhm",
+        API_URL: API_URL,
+        FRONT_URL: 'https://uat-p2p.krinos.app/',
+        ADMIN_URL: 'https://uatadmin-p2p.krinos.app/',
         getGeoInfo:  "https://geolocation-db.com/json/"//"https://ipapi.co/json/",
     };
 } 
