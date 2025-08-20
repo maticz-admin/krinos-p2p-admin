@@ -1,5 +1,5 @@
 let key = {};
-let env = 'staging' //production or local
+let env = '' //production or local
 if (env == 'production') {
     const API_URL = 'https://api.tossvtoss.com'
     key = {
@@ -7,7 +7,7 @@ if (env == 'production') {
         Recaptchakey: "6LeKwCYjAAAAAMbORefOGhr-1AAXaTNTkL7MBJrV", //local
         API_URL: API_URL,
         FRONT_URL: 'https://www.tossvtoss.com',
-        ADMIN_URL: 'https://contorls.tossvtoss.com/' ,
+        ADMIN_URL: 'https://contorls.tossvtoss.com/',
         getGeoInfo: "https://geolocation-db.com/json/" //"https://ipapi.co/json/",
     };
 }
@@ -18,11 +18,11 @@ else if (env == 'demo') {
         secretOrKey: "FxUum76z",
         // Recaptchakey: "6LeKwCYjAAAAAMbORefOGhr-1AAXaTNTkL7MBJrV", // demo server
         // Recaptchakey: "6LeKwCYjAAAAAMbORefOGhr-1AAXaTNTkL7MBJrV", // stag server
-        Recaptchakey : "6LcNAH4rAAAAAMcji4ul5LhrLqALIWjglOhm",
+        Recaptchakey: "6LcNAH4rAAAAAMcji4ul5LhrLqALIWjglOhm",
         API_URL: API_URL,
         FRONT_URL: 'https://krinosp2p.maticz.in/',
         ADMIN_URL: 'https://krinosp2padmin.maticz.in/',
-        getGeoInfo:  "https://geolocation-db.com/json/"//"https://ipapi.co/json/",
+        getGeoInfo: "https://geolocation-db.com/json/"//"https://ipapi.co/json/",
     };
 }
 else if (env == 'staging') {
@@ -32,13 +32,13 @@ else if (env == 'staging') {
         secretOrKey: "FxUum76z",
         // Recaptchakey: "6LeKwCYjAAAAAMbORefOGhr-1AAXaTNTkL7MBJrV", // demo server
         // Recaptchakey: "6LeKwCYjAAAAAMbORefOGhr-1AAXaTNTkL7MBJrV", // stag server
-        Recaptchakey : "6LcNAH4rAAAAAMcji4ul5LhrLqALIWjglOhm",
+        Recaptchakey: "6LcNAH4rAAAAAMcji4ul5LhrLqALIWjglOhm",
         API_URL: API_URL,
         FRONT_URL: 'https://uat-p2p.krinos.app/',
         ADMIN_URL: 'https://uatadmin-p2p.krinos.app/',
-        getGeoInfo:  "https://geolocation-db.com/json/"//"https://ipapi.co/json/",
+        getGeoInfo: "https://geolocation-db.com/json/"//"https://ipapi.co/json/",
     };
-} 
+}
 else {
     const API_URL = 'http://localhost';
     key = {

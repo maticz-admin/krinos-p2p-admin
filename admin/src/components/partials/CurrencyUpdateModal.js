@@ -38,12 +38,13 @@ const initialFormValue = {
   status: "active",
   depositminlimit: 0,
   isPrimary: false,
-  commisionfee : 0,
-  buyercommisionfee : 0,
-  coinpaymentsymbol : "",
-  key : "",
-  api : "",
-  "bitgosymbol" : ""
+  commisionfee: 0,
+  buyercommisionfee: 0,
+  chainId: 0,
+  coinpaymentsymbol: "",
+  key: "",
+  api: "",
+  "bitgosymbol": ""
 };
 
 class CurrencyUpdateModal extends React.Component {
@@ -78,10 +79,11 @@ class CurrencyUpdateModal extends React.Component {
         decimal: record.decimal,
         depositStatus: record.depositStatus,
         withdrawStatus: record.withdrawStatus,
-        commisionfee : record.commisionfee,
-        buyercommisionfee : record?.buyercommisionfee,
-        coinpaymentsymbol : record.coinpaymentsymbol,
-        "bitgosymbol" : record?.bitgosymbol
+        commisionfee: record.commisionfee,
+        buyercommisionfee: record?.buyercommisionfee,
+        chainId: record?.chainId,
+        coinpaymentsymbol: record.coinpaymentsymbol,
+        "bitgosymbol": record?.bitgosymbol
       };
       if (record.type == "fiat") {
         formData["bankName"] = record.bankDetails.bankName;
@@ -95,9 +97,9 @@ class CurrencyUpdateModal extends React.Component {
         formData["contractDecimal"] = record.contractDecimal;
         formData["tokenType"] = record.tokenType;
       }
-      if(record.depositType == "local"){
-         formData["api"] = record.api 
-         formData["key"] = record.key 
+      if (record.depositType == "local") {
+        formData["api"] = record.api
+        formData["key"] = record.key
       }
       this.setState({ formValue: formData });
     }
@@ -170,12 +172,13 @@ class CurrencyUpdateModal extends React.Component {
       formData.append("status", formValue.status);
       formData.append("depositStatus", formValue.depositStatus);
       formData.append("withdrawStatus", formValue.withdrawStatus);
-      formData.append("commisionfee" , formValue.commisionfee);
-      formData.append("buyercommisionfee" , formValue.buyercommisionfee)
-      formData.append("coinpaymentsymbol" , formValue.coinpaymentsymbol);
-      formData.append("bitgosymbol" , formValue?.bitgosymbol)
-      formData.append("api" , formValue.api);
-      formData.append("key" , formValue.key);
+      formData.append("commisionfee", formValue.commisionfee);
+      formData.append("buyercommisionfee", formValue.buyercommisionfee)
+      formData.append("chainId", formValue.chainId)
+      formData.append("coinpaymentsymbol", formValue.coinpaymentsymbol);
+      formData.append("bitgosymbol", formValue?.bitgosymbol)
+      formData.append("api", formValue.api);
+      formData.append("key", formValue.key);
 
       this.setState({ loader: true });
 
@@ -194,7 +197,7 @@ class CurrencyUpdateModal extends React.Component {
           toastAlert("error", message, "currencyUpdateModal");
         }
       }
-    } catch (err) {}
+    } catch (err) { }
   };
 
   render() {
@@ -226,12 +229,13 @@ class CurrencyUpdateModal extends React.Component {
       withdrawStatus,
       commisionfee,
       buyercommisionfee,
+      chainId,
       coinpaymentsymbol,
       bitgosymbol,
-      api , 
+      api,
       key
     } = this.state.formValue;
-   
+
     const { errors, loader } = this.state;
 
     const { isShow } = this.props;
@@ -330,7 +334,7 @@ class CurrencyUpdateModal extends React.Component {
 
               <div className="row mt-2">
                 <div className="col-md-3">
-                  <label>Bitgo Symbol</label>
+                  <label>Bitgo Network Symbol</label>
                 </div>
                 <div className="col-md-9">
                   <input
@@ -721,7 +725,7 @@ class CurrencyUpdateModal extends React.Component {
               </div>
 
 
-              {depositType =="local" &&<><div className="row mt-2">
+              {depositType == "local" && <><div className="row mt-2">
                 <div className="col-md-3">
                   <label>API</label>
                 </div>
@@ -739,25 +743,25 @@ class CurrencyUpdateModal extends React.Component {
                   <span className="text-danger">{errors.api}</span>
                 </div>
               </div>
-              <div className="row mt-2">
-                <div className="col-md-3">
-                  <label>Key</label>
+                <div className="row mt-2">
+                  <div className="col-md-3">
+                    <label>Key</label>
+                  </div>
+                  <div className="col-md-9">
+                    <input
+                      name="key"
+                      type="text"
+                      value={key}
+                      onChange={this.handleChange}
+                      error={errors.key}
+                      className={classnames("form-control", {
+                        invalid: errors.key,
+                      })}
+                    />
+                    <span className="text-danger">{errors.key}</span>
+                  </div>
                 </div>
-                <div className="col-md-9">
-                  <input
-                    name="key"
-                    type="text"
-                    value={key}
-                    onChange={this.handleChange}
-                    error={errors.key}
-                    className={classnames("form-control", {
-                      invalid: errors.key,
-                    })}
-                  />
-                  <span className="text-danger">{errors.key}</span>
-                </div>
-              </div>
-              
+
               </>}
 
               {/* <div className="row mt-2">
@@ -818,7 +822,7 @@ class CurrencyUpdateModal extends React.Component {
                 </div>
               </div>
 
-              
+
 
               <div className="row mt-2">
                 <div className="col-md-3">
@@ -839,41 +843,60 @@ class CurrencyUpdateModal extends React.Component {
                 </div>
               </div>
 
-              <div className="row mt-2">
-                  <div className="col-md-3">
-                    <label>Decimals</label>
-                  </div>
-                  <div className="col-md-9">
-                    <input
-                      name="decimal"
-                      type="number"
-                      value={decimal}
-                      onChange={this.handleChange}
-                      error={errors.decimal}
-                      className={classnames("form-control", {
-                        invalid: errors.decimal,
-                      })}
-                    />
-                    <span className="text-danger">
-                      {errors.decimal}
-                    </span>
-                  </div>
+              {/* <div className="row mt-2">
+                <div className="col-md-3">
+                  <label htmlFor="minimum">Chain ID</label>
                 </div>
+                <div className="col-md-9">
+                  <input
+                    name="chainId"
+                    type="text"
+                    value={chainId}
+                    onChange={this.handleChange}
+                    error={errors.chainId}
+                    className={classnames("form-control", {
+                      invalid: errors.chainId,
+                    })}
+                  />
+                  <span className="text-danger">{errors.chainId}</span>
+                </div>
+              </div> */}
+
+              <div className="row mt-2">
+                <div className="col-md-3">
+                  <label>Decimals</label>
+                </div>
+                <div className="col-md-9">
+                  <input
+                    name="decimal"
+                    type="number"
+                    value={decimal}
+                    onChange={this.handleChange}
+                    error={errors.decimal}
+                    className={classnames("form-control", {
+                      invalid: errors.decimal,
+                    })}
+                  />
+                  <span className="text-danger">
+                    {errors.decimal}
+                  </span>
+                </div>
+              </div>
 
               <div className="row mt-2">
                 <div className="col-md-3">
                   <label htmlFor="minimum">Currency icon</label>
                 </div>
                 <div className="col-md-9">
-                <label class="custom-file-upload">
-                  <input
-                    name="image"
-                    type="file"
-                    onChange={this.handleFile}
-                    accept="image/x-png,image/gif,image/jpeg"
-                    aria-describedby="fileHelp"
-                  />
-                  Choose File
+                  <label class="custom-file-upload">
+                    <input
+                      name="image"
+                      type="file"
+                      onChange={this.handleFile}
+                      accept="image/x-png,image/gif,image/jpeg"
+                      aria-describedby="fileHelp"
+                    />
+                    Choose File
                   </label>
                   <span className="text-danger">{errors.image}</span>
                   <img
